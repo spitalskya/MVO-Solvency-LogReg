@@ -1,0 +1,4 @@
+.venv
+.vscode
+activate.bat
+deactivate.bat
