@@ -1,0 +1,50 @@
+\documentclass[presentation.tex]{subfiles} 
+
+\begin{document}
+
+\begin{frame}
+
+\frametitle{Predstavenie projektu -- lineárna regresia}
+\begin{itemize}
+	\item lineárna regresia -- predikcia $y \in \mathbb{R}^n$ lineárnou kombináciou $x_1,\dots,x_k \in \mathbb{R}^n$
+\end{itemize}
+\begin{align*}
+	\min~&||y - \hat{y}|| \\
+	&\hat{y} = \beta_0 + \beta_1x_1 + \dots + \beta_kx_k
+\end{align*}
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c  c  c  c  c |}
+		\hline
+		atribúty & $x_1$ & $x_2$ & \dots & $x_k$ & $y$ \\
+		\hline
+		pozorovanie 1 & 1 & 0.84 & \dots & 121 & 4.25 \\
+		\vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+		pozorovanie $n$ & 4 & 0.12 & \dots & 117 & 5.68 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{itemize}
+	\item vyjadriteľné ako úloha lineárneho programovania -- $L^1$, $L^{\infty}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Predstavenie projektu -- obsah}
+
+\begin{itemize}
+	\item formulácia LP úloh 
+	\item implementácia v \pyth|Python|-e a predikcia kvality vína
+	\item počítanie a interpretácia $R^2$ koeficientu
+	\item implementácia všeobecnej triedy na počítanie $L^1$ a $L^{\infty}$ lineárnej regresie
+	\item minimalizácia váženej sumy noriem
+\end{itemize}
+
+\end{frame}
+
+
+	
+\end{document}

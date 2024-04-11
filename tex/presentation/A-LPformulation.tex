@@ -1,0 +1,127 @@
+\documentclass[presentation.tex]{subfiles} 
+\newcommand*{\vertbar}{\rule[0ex]{0.3pt}{1.5ex}}
+\newcommand*{\horzbar}{\rule[0ex]{1.5ex}{0.3pt}}
+\begin{document}
+	
+	\begin{frame}
+		\frametitle{Formulácia úloh lineárneho programovania}
+		\framesubtitle{Úloha}
+		   Nájsť koeficienty $\beta_0, \beta_1, \dots, \beta_k$ tak, aby predikovaný vektor 
+		\begin{equation}
+			\hat{y} = \beta_0 + \beta_1 x_1 + \ldots + \beta_k x_k
+		\end{equation}
+		bol čo najbližšie k výstupu $y$, kde $y$ označuje závislú premennú a $x_1, x_2, \dots, x_k \in \mathbb{R}^n$ označujú nezávislé premenné.
+		Túto vzdialenosť $||y - \hat{y}||$ sme minimalizovali $L^1$ a $L^{\infty}$ normami
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Minimalizovanie $L^1$ normy}
+		Chceme minimalizovať normu $||y - \hat{y}||_1$ \\
+		\text{označíme: }
+		\begin{equation}\label{eq:notation}
+			\begin{aligned}
+			\mathbf{A} &:= (\mathbf{1_n}, x_1, \dots, x_k) \\
+			\beta &:= (\beta_0, \beta_1, \dots, \beta_k)^T
+			\end{aligned}
+		\end{equation}
+		\text Problém prevedieme do tvaru:
+		\begin{align*}
+			\text{min}~ &c^Tx\\
+			&\mathbf{A}x \geq b
+		\end{align*}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Minimalizovanie $L^{\infty}$ normy}
+		\text Zavedieme nový vektor $t \in \mathbb{R}^n$, ktorým ohraničíme $y - \mathbf{A} \beta$
+		Minimalizovanie $L^1$ normy ako úloha lineárneho programovania:
+		\begin{align*}
+			\text{min}~ &
+			\left(
+			\begin{array}{c|c}
+				\mathbf{0}_{k+1}^T ~&~ \mathbf{1}_n^T
+			\end{array}
+			\right)
+			\left(
+			\begin{array}{c}
+				\beta \\
+				\hline
+				t
+			\end{array}
+			\right) \\
+			&\left(
+			\begin{array}{c|c}
+				\mathbf{A} ~&~ \mathbb{I}_n \\
+				\hline
+				-\mathbf{A} ~&~ \mathbb{I}_n
+			\end{array}
+			\right)
+			\left(
+			\begin{array}{c}
+				\beta \\
+				\hline
+				t
+			\end{array}
+			\right)
+			\geq
+			\left(
+			\begin{array}{c}
+				y \\
+				\hline
+				-y
+			\end{array}
+			\right) \\
+			&\beta \in \mathbb{R}^{k+1},~t \geq \mathbf{0}_{n}
+		\end{align*}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Minimalizovanie  $L^{\infty}$ normy}
+		\text Chceme minimalizovať normu $||y - \hat{y}||_{\infty}$ \\
+		\text Zavedieme skalárnu premennú $\gamma \in \mathbb{R}$, prevedieme na úlohu LP 
+		\begin{align*}
+			-\gamma \mathbf{1}_n \leq y - \mathbf{A} \beta &\leq \gamma \mathbf{1}_n
+		\end{align*}
+		\text Pomocou značenia z \eqref{eq:notation}, výsledná úloha:
+		\begin{footnotesize}
+			\begin{align*}
+				\text{min}~ &
+				\left(
+				\begin{array}{c|c}
+					\mathbf{0}_{k+1}^T ~&~ 1
+				\end{array}
+				\right)
+				\left(
+				\begin{array}{c}
+					\beta \\
+					\hline
+					\gamma
+				\end{array}
+				\right) \\
+				&\left(
+				\begin{array}{c|c}
+					\mathbf{A} ~&~ \mathbf{1}_n \\
+					\hline
+					-\mathbf{A} ~&~ \mathbf{1}_n
+				\end{array}
+				\right)
+				\left(
+				\begin{array}{c}
+					\beta \\
+					\hline
+					\gamma
+				\end{array}
+				\right) 
+				\geq
+				\left(
+				\begin{array}{c}
+					y \\
+					\hline
+					-y
+				\end{array}
+				\right) \\
+				&\beta \in \mathbb{R}^{k+1},~\gamma \geq 0 
+			\end{align*}
+		\end{footnotesize}
+	\end{frame}
+\end{document}

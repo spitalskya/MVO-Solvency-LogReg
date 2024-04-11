@@ -1,0 +1,32 @@
+\documentclass[presentation.tex]{subfiles} 
+\begin{document}
+	
+	\begin{frame}
+		\frametitle{Predikcia kvality vína - výsledky}
+		\begin{columns}[t]
+			\begin{column}{0.5\textwidth}
+				\textbf{$L^1$}
+				\begin{itemize}
+					\item + vplyv teploty počas zretia
+					\item + vplyv veku vína
+					\item -- vplyv dažďu počas zberu
+					\item + vplyv dažďu počas zimy
+					\item -- vplyv populácie Francúzska 
+				\end{itemize}
+			\end{column}
+			
+			\begin{column}{0.5\textwidth}
+				\textbf{$L^{\infty}$}
+				\begin{itemize}
+					\item rovnaké poradie ako \textbf{$L^1$}
+					\item ale -- vplyv veku vína
+				\end{itemize}
+			\end{column}
+		\end{columns}
+		\begin{align*}
+			\beta_0^{(1)} &\approx -8.88 \cdot 10^{-1}&\beta_1^{(1)} &\approx 1.58\cdot 10^{-3}&\beta_2^{(1)} &\approx 5.21\cdot 10^{-1} \\
+			\beta_3^{(1)} &\approx -4.51\cdot 10^{-3} &\beta_4^{(1)} &\approx 1.13\cdot 10^{-2}&\beta_5^{(1)} &\approx -2.21\cdot 10^{-5}
+		\end{align*}
+	\end{frame}
+	
+\end{document}
