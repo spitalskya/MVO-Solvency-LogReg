@@ -1,0 +1,59 @@
+\documentclass[presentation.tex]{subfiles} 
+
+\begin{document}
+	
+	\begin{frame}
+		\frametitle{$R^2$ -- koeficient determinácie }
+		\begin{itemize}
+			\item typicky hodnota z intervalu [0; 1]
+			\item podiel rozptylu závislej premennej zachytený modelom
+			\item čím bližšie k 1, tým lepšie vysvetľuje rozptyl
+		\end{itemize}
+		
+		
+		
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{$R^2$ -- koeficient determinácie}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\centering
+				\begin{align*}
+						&R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+				\end{align*}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item rozdiely medzi skutočnými hodnotami $y$ a predpovedanými
+					\item  rozdiely medzi skutočnými hodnotami $y$ a priemerom (rozptyl)
+				\end{itemize}
+				
+			\end{column}
+		\end{columns}
+
+		\begin{columns}
+			\begin{column}{\textwidth}
+			\begin{itemize}
+				\item ukazuje, aký podiel rozptylu závislej premennej je vysvetlený nezávislými premennými.
+			\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Výsledky pre naše predikcie}
+				\begin{itemize}
+					\item regresie $L^1$, $L^{\infty}$
+					\item koeficienty pre obe normy: 
+					\begin{align*} 
+						R^{2}_{(1)} &\approx  0.78813\\
+						R^{2}_{(\infty)} &\approx 0.80649
+					\end{align*}
+					\item obe dostatočne zachytávajú rozptyl
+				\end{itemize}
+			
+	\end{frame}
+	
+\end{document} 

@@ -1,0 +1,368 @@
+\documentclass[report.tex]{subfiles}
+
+\begin{document}
+\section{Formulácia úloh lineárneho programovania}\label{sec:A}
+
+Máme dané vektory $y, x_1, x_2, \dots, x_k$. Chceme nájsť parametre $\beta_0, \beta_1,\dots,\beta_k$ také, ktoré pre vektor $\hat{y} = \beta_0 + \beta_1x_1 + \dots + \beta_kx_k$ minimalizujú normu $||y - \hat{y}||_1$, resp. normu $||y - \hat{y}||_{\infty}$. 
+
+Vyjadrime vektor $\hat{y}$ ako súčin matice a vektora $\beta = (\beta_0, \beta_1, \dots, \beta_k)^T$.
+
+\begin{align*}
+	\hat{y} = \beta_0 + \beta_1x_1 + \dots + \beta_kx_k = 
+	\left(
+		\begin{array}{ccccc}
+			\vertbar & \vertbar & \vertbar &  & \vertbar \\
+			\mathbf{1}_n & x_1 & x_2 & \dots & x_k \\
+			\vertbar & \vertbar & \vertbar &  & \vertbar
+		\end{array}
+	\right)
+	\beta
+	=\colon
+	\mathbf{A} \beta
+\end{align*}
+
+\subsection{Minimalizovanie $L^1$ normy}
+
+Prevedieme problém zo zadania do tvaru:
+
+\begin{align*}
+	\text{min}~ &c^Tx\\
+	&Ax \geq b
+\end{align*}
+
+Zaveďme si nový vektor premenných $t \in \mathbb{R}^n$, ktorým ohraničíme vektor $y - \mathbf{A} \beta$. Úloha sa teda z minimalizovania normy $||y - \mathbf{A} \beta||_1$ prevedie na minimalizáciu $\mathbf{1}_n^Tt$.
+
+\begin{align*}
+	-t \leq y - \mathbf{A} \beta &\leq t
+\end{align*}	
+
+Pre obe ohraničenia, odseparujme premenné od konštánt a prevedieme do maticového tvaru.
+
+\begin{align*}
+	\left(
+		\begin{array}{c|c}
+			\mathbf{A} & \mathbb{I}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			t
+		\end{array}
+	\right) &\geq y \\
+	\left(
+		\begin{array}{c|c}
+			-\mathbf{A} & \mathbb{I}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			t
+		\end{array}
+	\right) &\geq -y
+\end{align*}
+
+Minimalizovanie $L^{1}$ normy ako úloha lineárneho programovania vyzerá teda nasledovne.
+
+\begin{align}
+	\text{min}~ &
+	\left(
+		\begin{array}{c|c}
+			\mathbf{0}_{k+1}^T & \mathbf{1}_n^T
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			t
+		\end{array}
+	\right) \nonumber \\
+	&\left(
+		\begin{array}{c|c}
+			\mathbf{A} & \mathbb{I}_n \\
+			\hline
+			-\mathbf{A} & \mathbb{I}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			t
+		\end{array}
+	\right)
+	\geq
+	\left(
+		\begin{array}{c}
+			y \\
+			\hline
+			-y
+		\end{array}
+	\right) \label{P1} \\
+	&\beta \in \mathbb{R}^{k+1},~t \geq \mathbf{0}_{n} \nonumber
+\end{align}
+
+\subsubsection{Prípustnosť a optimalita}\label{sec:1Optim}
+
+Dokážme, že \eqref{P1} je úloha, ktorá nadobúda optimálne riešenie pre ľubovoľné vektory $y, x_1, x_2, \dots, x_k$. Nech $|y| := (|y_1|, |y_2|, \dots, |y_n|)^T$ pre $y = (y_1, y_2, \dots, y_n)^T$. Ukážme prípustnosť zvolením $\beta = \mathbf{0}_{k+1}$ a $t = |y|$:
+
+\begin{align*}
+	\left(
+		\begin{array}{c|c}
+			\mathbf{A} & \mathbb{I}_n \\
+			\hline
+			-\mathbf{A} & \mathbb{I}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\mathbf{0}_{k+1} \\
+			\hline
+			|y|
+		\end{array}
+	\right)
+	=
+	\left(
+		\begin{array}{c}
+			|y| \\
+			\hline
+			|y|
+		\end{array}
+	\right)
+	&\geq
+	\left(
+		\begin{array}{c}
+			y \\
+			\hline
+			-y
+		\end{array}
+	\right) \\
+	\mathbf{0}_{k+1} \in \mathbb{R}^{k+1},~|y| &\geq \mathbf{0}_{n} 
+\end{align*}
+
+\newpage
+
+Vidíme, že ohraničenia úlohy \eqref{P1} sú splnené, čiže $\left(\mathbf{0}_{k+1}^T, |y|^T \right)^T$ je prípustné riešenie.
+
+Optimalitu ukážeme zo slabej duality. Sformulujme duálnu úlohu pre duálne premenné $\alpha_1, \alpha_2 \in \mathbb{R}^{n}$:
+
+\begin{align*}
+	\text{max}~ &
+	\left(
+		\begin{array}{c|c}
+			y^T & -y^T
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\hline
+			\alpha_2
+		\end{array}
+	\right) \\
+	&\left(
+		\begin{array}{c|c}
+			\mathbf{A}^T & -\mathbf{A}^T
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\hline
+			\alpha_2
+		\end{array}
+	\right)
+	=
+	\mathbf{0}_{k+1} \\
+	&\left(
+		\begin{array}{c|c}
+			\mathbb{I}_n & \mathbb{I}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\hline
+			\alpha_2
+		\end{array}
+	\right)
+	\leq
+	\mathbf{1}_{n} \\
+	&\alpha_1, \alpha_2 \geq \mathbf{0}_{n} 
+\end{align*}
+
+Vidíme, že táto úloha je prípustná pre $\alpha_1 = \alpha_2 = \mathbf{0}_n$. Z prípustnosti primárnej a duálnej úlohy teda vyplýva, že úloha \eqref{P1} nadobúda optimálne riešenie pre ľubovoľnú voľbu počiatočných vektorov.
+
+\subsection{Minimalizovanie $L^{\infty}$ normy}
+
+Budeme používať rovnaké značenie pre predikovaný vektor hodnôt $\hat{y} = \mathbf{A}\beta$, ako pri formulácii $L^1$ normy. Zaveďme si skalárnu premennú $\gamma \in \mathbb{R}$, vektorom $\gamma\mathbf{1}_n$ ohraničíme vektor $y - \mathbf{A} \beta$. Úloha sa z minimalizácie $||y - \mathbf{A} \beta||_{\infty}$ prevedie na minimalizáciu $\gamma$.
+
+\begin{align*}
+	-\gamma \mathbf{1}_n \leq y - \mathbf{A} \beta &\leq \gamma \mathbf{1}_n
+\end{align*}
+
+Pre jednotlivé ohraničenia odseparujeme premenné od konštánt a zapíšeme v maticovom tvare.
+
+\begin{align*}
+	\left(
+		\begin{array}{c|c}
+			\mathbf{A} & \mathbf{1}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			\gamma
+		\end{array}
+	\right) & \geq y \\
+	\left(
+		\begin{array}{c|c}
+			-\mathbf{A} & \mathbf{1}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			\gamma
+		\end{array}
+	\right) &\geq -y \\
+\end{align*}
+
+
+Minimalizovanie $L^{\infty}$ normy ako úloha lineárneho programovania vyzerá teda nasledovne.
+
+\begin{align}
+	\text{min}~ &
+	\left(
+		\begin{array}{c|c}
+			\mathbf{0}_{k+1}^T & 1
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			\gamma
+		\end{array}
+	\right) \nonumber \\
+	&\left(
+		\begin{array}{c|c}
+			\mathbf{A} & \mathbf{1}_n \\
+			\hline
+			-\mathbf{A} & \mathbf{1}_n
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\beta \\
+			\hline
+			\gamma
+		\end{array}
+	\right)
+	\geq
+	\left(
+		\begin{array}{c}
+			y \\
+			\hline
+			-y
+		\end{array}
+	\right) \label{Pinf}\\
+	&\beta \in \mathbb{R}^{k+1},~\gamma \geq 0 \nonumber
+\end{align}
+
+\newpage
+
+\subsubsection{Prípustnosť a optimalita}\label{sec:InfOptim}
+
+Podobný spôsobom ako vyššie ukážeme optimalitu \eqref{Pinf}. Nech $\beta = \mathbf{0}_{k+1}$ a $\gamma = |\tilde{y}|$, kde $|\tilde{y}| := \max(|y_1|, |y_2|, \dots, |y_n|)$ pre $y = (y_1, y_2, \dots, y_n)^T$:
+
+\begin{align*}
+	\left(
+	\begin{array}{c|c}
+		\mathbf{A} & \mathbf{1}_n \\
+		\hline
+		-\mathbf{A} & \mathbf{1}_n
+	\end{array}
+	\right)
+	\left(
+	\begin{array}{c}
+		\mathbf{0}_{k+1} \\
+		\hline
+		|\tilde{y}|
+	\end{array}
+	\right)
+	=
+	\left(
+		\begin{array}{c}
+			|\tilde{y}| \mathbf{1}_n \\
+			\hline
+			|\tilde{y}| \mathbf{1}_n
+		\end{array}
+	\right)
+	&\geq
+	\left(
+		\begin{array}{c}
+			y \\
+			\hline
+			-y
+		\end{array}
+	\right) \\
+	\mathbf{0}_{k+1} \in \mathbb{R}^{k+1},~|\tilde{y}| &\geq 0 
+\end{align*}
+
+Obe ohraničenia platia, čiže $(\mathbf{0}_{k+1}^T, |\tilde{y}|)^T$ je prípustné riešenie. Sformulujme duálnu úlohu s duálnymi premennými $\alpha_1, \alpha_2 \in \mathbb{R}^n$:
+
+\begin{align*}
+	\text{max}~ &
+	\left(
+		\begin{array}{c|c}
+			y^T & -y^T
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\hline
+			\alpha_2
+		\end{array}
+	\right) \\
+	&\left(
+		\begin{array}{c|c}
+			\mathbf{A}^T & -\mathbf{A}^T
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\hline
+			\alpha_2
+		\end{array}
+	\right)
+	=
+	\mathbf{0}_{k+1} \\
+	&\left(
+		\begin{array}{c|c}
+			\mathbf{1}_n^T & \mathbf{1}_n^T
+		\end{array}
+	\right)
+	\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\hline
+			\alpha_2
+		\end{array}
+	\right)
+	\leq
+	1 \\
+	&\alpha_1, \alpha_2 \geq \mathbf{0}_{n} 
+\end{align*}
+
+Rovnako vidíme, že táto úloha je prípustná pre $\alpha_1 = \alpha_2 = \mathbf{0}_n$. Teda, zo slabej duality, úloha \eqref{Pinf} nadobúda optimálne riešenie pre ľubovoľnú voľbu počiatočných vektorov.
+
+\end{document}

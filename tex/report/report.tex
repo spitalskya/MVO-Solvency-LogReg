@@ -1,0 +1,98 @@
+\documentclass[12pt,oneside,a4paper,slovak]{article}   
+\usepackage{subfiles}
+
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{dirtree}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{pythonhighlight}
+\usepackage[skip=0pt]{caption}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage[final]{hyperref}
+\usepackage[T1]{fontenc}                % slovencina
+\usepackage[slovak]{babel}
+\usepackage{verbatim}
+
+\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm, headheight=0.6cm, headsep=0.3cm, footskip=1cm}
+
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+\renewcommand{\baselinestretch}{1}
+\newcommand*{\vertbar}{\rule[0ex]{0.3pt}{1.5ex}}
+\newcommand*{\horzbar}{\rule[0ex]{1.5ex}{0.3pt}}
+\setlength{\parindent}{1em}
+
+\begin{document}
+	\setcounter{section}{-1}
+	\begin{titlepage}
+		\large
+		
+		\begin{center}
+			\textbf{Fakulta matematiky, fyziky a informatiky Univerzity Komenského, Bratislava}
+			
+			\vspace{8cm}
+			
+			\LARGE\textbf{Projekt z lineárneho programovania}
+			
+			\LARGE\textbf{A04 – Predikcia kvality vína, lineárna regresia pomocou} $\mathbf{L^1}$ \textbf{,} $\mathbf{L^{\infty}}$
+			
+			\bigskip 
+		\end{center}
+			
+		\vfill
+		
+		\hfill
+		\begin{minipage}{0.5\textwidth}
+			\raggedleft
+			
+			\textit{Piati proti optimalizácii}
+	
+			Tomáš Antal, 2DAV, 0.2
+			
+			Erik Božík, 2DAV, 0.2
+			
+			Róbert Kendereš, 2DAV, 0.2
+			
+			Teo Pazera, 2DAV, 0.2
+			
+			Andrej Špitalský, 2DAV, 0.2
+		\end{minipage}
+			
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\subfile{introduction}
+	\newpage
+	\subfile{taskA}
+	\newpage
+	\subfile{taskB}
+	\newpage
+	\subfile{taskC}
+	\newpage
+	\subfile{taskD}
+	\newpage
+	\subfile{taskE}
+	\newpage
+	\subfile{taskF}
+	\newpage
+	\subfile{taskG}
+	\newpage
+	\subfile{conclusion}
+	\newpage
+	\subfile{codeDoc}
+	\newpage
+	
+\end{document}
