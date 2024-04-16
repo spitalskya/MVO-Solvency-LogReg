@@ -60,38 +60,24 @@ def backtracking(obj_fun: Callable[[np.ndarray], float],
     if grad is None:
         grad = lambda x: approx_fprime(x, obj_fun, args=args)
     
-    x: np.ndarray[float] = np.array(x_0, dtype=float)
+    lam: float = 1
     it: int = 0
-    fun0: float = obj_fun(np.zeros(len(x_0)), *args)
-    grad0: np.ndarray[float] = grad(np.zeros(len(x_0)), *args)
+    fun0: float = obj_fun(x_0, *args)
+    direction_der_x_0: float = np.dot(grad(x_0), s)
+
     
-    while obj_fun(x, *args) >= fun0 + alpha * np.dot(x, grad0):
+    while obj_fun(x_0 + lam * s, *args) >= fun0 + alpha * lam * direction_der_x_0:
         if it == maxiter:
             break
 
         if callback is not None:
-            callback(x)
+            callback(lam)
         
-        x *= (grad(x) @ s) * delta
+        lam *= delta
         it += 1
     
-    return OptimizeResult(x=x, nit=it)
-
-
-def f1(x, a=1):
-    A = np.diag((1, a))
-    h = np.array((a, a**2))
-    return 0.5 * x@A@x - x@h
-
-def df1(x, a=1):
-    A = np.diag((1, a))
-    h = np.array((a, a**2))
-    return A@x - h
-
-print(backtracking(f1, np.array([100, 100]), np.array([1, 1]), df1))
+    return OptimizeResult(x=lam, nit=it)
     
-
-
 def bisection(obj_fun: Callable[[np.ndarray], float],
               grad: Callable[[np.ndarray], np.ndarray],
               x_0: np.ndarray, s: np.ndarray) -> OptimizeResult:
