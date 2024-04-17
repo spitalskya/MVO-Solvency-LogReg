@@ -13,10 +13,10 @@ def backtracking(obj_fun: Callable[[np.ndarray], float],
 
     Parameters:
     -----------
-        fun : callable f(x, *args)
+        obj_fun : callable f(x, *args)
             objective function
         
-        dfun : callable f(x, *args)
+        grad : callable f(x, *args)
             derivative of objective function
                 If not provided, uses approx_fprime
 
@@ -26,7 +26,7 @@ def backtracking(obj_fun: Callable[[np.ndarray], float],
         delta : float
             Parameter of reduction
 
-        x0 : float
+        x_0 : float
             starting point
         
         args : tuple, optional
