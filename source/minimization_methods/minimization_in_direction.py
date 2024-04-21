@@ -86,8 +86,9 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
               grad: Callable[[np.ndarray], np.ndarray]=None,
               callback: Callable=None, options:dict={}, **kwargs) -> OptimizeResult:
     """
+    Minimization method
 
-    Args:
+    Parameters:
         obj_fun: Callable[[np.ndarray], float]
             Objective function
 
@@ -100,6 +101,7 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
 
         s: np.ndarray
             Direction
+            
         args: tuple, optional
             Extra arguments passed to the objective function.
 
@@ -178,10 +180,10 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         if callback is not None:
             callback(midpoint)
         
-        if np.linalg.norm(gradJ(midpoint)) < tol:
+        if np.dot(grad(midpoint, *args), s) < tol:
             break
     
-    success: bool = np.linalg.norm(gradJ(midpoint)) < tol
+    success: bool = np.dot(grad(midpoint, *args), s) < tol
 
     msg: str
     if success:
@@ -191,7 +193,6 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
     
     return OptimizeResult(x=(a+b)/2, success=success, message=msg,
                           nit=it, tol=tol, interval=(a, b))
-    
 
     
 
