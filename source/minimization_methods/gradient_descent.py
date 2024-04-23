@@ -156,5 +156,5 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
     else:
         msg = "Optimization failed"
 
-    return OptimizeResult(x=x, success=success, message=msg, jac=grad_value, callback = callback, nit=it)
+    return OptimizeResult(x=x, success=success, message=msg, jac=grad_value, callback = callback, nit=it, njev=it)
 
