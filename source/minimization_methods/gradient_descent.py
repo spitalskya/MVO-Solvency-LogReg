@@ -54,8 +54,7 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
         s = -grad
         if np.linalg.norm(grad) < tol:
             break
-        dfun = lambda lam : grad(x + lam*s, *args) @ s
-        stepsize = bisection(dfun, bounds=(0, max_stepsize))['x']
+        stepsize = bisection(obj_fun, grad, x)['x']
 
         x -= stepsize * grad_value
 
