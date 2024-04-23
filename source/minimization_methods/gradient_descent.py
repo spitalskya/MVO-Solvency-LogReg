@@ -1,13 +1,12 @@
 from typing import Callable
 import numpy as np
-from scipy.optimize import OptimizeResult
-from minimization_in_direction import backtracking, bisection
+from scipy.optimize import OptimizeResult, approx_fprime
+from minimization_in_direction import bisection
 
 def optimalStep(obj_fun: Callable[[np.ndarray], float],
                 grad: Callable[[np.ndarray], np.ndarray],
                 x_0: np.ndarray, args: tuple[float], callback: Callable=None, options={}) -> OptimizeResult:
     """_summary_
-
     Args:
         obj_fun : callable f(x, *args)
             Objective function to be minimized.
@@ -29,9 +28,7 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
                 Maximum number of iterations to perform.
             tol : float
                 Tolerance for termination.
-            max_stepsize : numeric
-                Initial guess for step search.
-
+            
     Raises:
         ValueError: function called without initial guess
 
@@ -44,25 +41,26 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
     """
     if x_0 is None:
         raise ValueError("Must provide initial guess `x0`!")
+    if grad is None:
+        grad = lambda x: approx_fprime(x, obj_fun, args=args)
 
-    maxiter = options.get("maxiter", 10_000)
-    tol = options.get("tol", 1e-6)
-    max_stepsize = options.get("stepsize", 1)
-    x = np.array(x_0)
+    maxiter: int = options.get("maxiter", 10_000)
+    tol: float = options.get("tol", 1e-6)
+    x: np.ndarray = np.array(x_0, dtype=np.float64)
+    it: int
     for it in range(1, maxiter + 1):
-        grad_value = grad(x, *args)
-        s = -grad
-        if np.linalg.norm(grad) < tol:
+        grad_value: np.ndarray = grad(x, *args)
+        if np.linalg.norm(grad_value) < tol:
             break
-        stepsize = bisection(obj_fun, grad, x)['x']
+        stepsize:float = bisection(obj_fun, grad, x).x
 
         x -= stepsize * grad_value
 
         if callback is not None:
             callback(x)
 
-    success = np.linalg.norm(grad(x, *args)) < tol
-
+    success: bool = np.linalg.norm(grad_value) < tol
+    msg: str
     if success:
         msg = "Optimization successful"
     else:
@@ -74,12 +72,9 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
 
 def constantStep(obj_fun: Callable[[np.ndarray], float],
                  grad: Callable[[np.ndarray], np.ndarray],
-                 x_0: np.ndarray, args: tuple[float], callback: Callable =None,  options= {}) -> OptimizeResult:
-    """
-    Minimization method
-
-    Parameters
-    ----------
+                 x_0: np.ndarray, args: tuple[float], callback: Callable=None,  options= {}) -> OptimizeResult:
+    """_summary_
+    Args:
     obj_fun : callable f(x, *args)
         Objective function to be minimized.
 
@@ -101,25 +96,9 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
                 Maximum number of iterations to perform.
             tol : float
                 Tolerance for termination.
-            max_stepsize : numeric
-                Initial guess for step search.
-            maxiter_step_search: int
-                Maximum number of iteration to perform when searching
-                for step size.
-            
-
-    **kwargs : dict, optional
-        Other parameters passed to `backtrack`. Will be ignored.
-
-    Raises
-    ------
-    ValueError
-        if `x0` is not provided.
-    AssertionError
-        If `alpha` is not from range (0, 1/2] or `delta` is not from range (0, 1).
-
+            stepsize : float
+                guess for step search.  
     Returns
-    -------
     res : OptimizeResult
         The optimization result represented as a OptimizeResult object.
         Important attributes are: x the solution,
@@ -129,31 +108,34 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
     """
     if x_0 is None:
         raise ValueError("Must provide initial guess `x_0`!")
+    if grad is None:
+        grad = lambda x: approx_fprime(x, obj_fun, args=args)
 
-    maxiter = options.get("maxiter", 1000)
-    tol = options.get("tol", 1e-6)
+    maxiter: int = options.get("maxiter", 1000)
+    tol: float = options.get("tol", 1e-6)
 
-    x = np.array(x_0)
+    x: np.ndarray = np.array(x_0, dtype=np.float64)
+    stepsize: float = options.get("stepsize")
 
-    grad_value = grad(x, *args)
-    stepsize = backtracking(obj_fun=obj_fun, grad=grad, x_0 = x_0, s = -grad_value, args=args)
+    it: int
     for it in range(1, maxiter+1):
-        
-        if np.linalg.norm(grad) < tol:
+        grad_value: np.ndarray = grad(x, *args)
+
+        if np.linalg.norm(grad_value) < tol:
             break
 
         x -= stepsize * grad
 
         if callback is not None:
             callback(x)
-        grad_value = grad(x, *args)
 
-    success =  np.linalg.norm(grad_value) < tol
+    success: bool =  np.linalg.norm(grad_value) < tol
 
+    msg: str
     if success:
         msg = "Optimization successful"
     else:
         msg = "Optimization failed"
 
-    return OptimizeResult(x=x, success=success, message=msg, jac=grad_value, callback = callback, nit=it, njev=it)
+    return OptimizeResult(x=x, success=success, message=msg, grad_value=grad_value, callback=callback, nit=it, njev=it)
 
