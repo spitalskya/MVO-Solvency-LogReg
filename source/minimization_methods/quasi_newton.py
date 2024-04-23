@@ -57,7 +57,11 @@ def BFGS(obj_fun: Callable[[np.ndarray], float],
         if np.linalg.norm(g_plus) < tol:
             break
         
-        H = H + (1 + (y @ H @ y)/(p @ y)) * ((np.outer(p, p)) / p @ y) - (H @ np.outer(y, p) + np.outer(y, p) @ H) / (p @ y)
+        # H+ calculation
+        yp_outer: np.ndarray = np.outer(y, p)
+        denominator: float = p @ y
+        H += (1 + (y @ H @ y)/denominator) * ((np.outer(p, p)) / denominator) - (H @ yp_outer + yp_outer @ H) / denominator
+        
         x = x_plus
         g = g_plus
         
