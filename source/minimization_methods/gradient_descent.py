@@ -1,7 +1,7 @@
 from typing import Callable
 import numpy as np
 from scipy.optimize import OptimizeResult, approx_fprime
-from minimization_in_direction import bisection
+from minimization_methods.minimization_in_direction import bisection
 
 def optimalStep(obj_fun: Callable[[np.ndarray], float],
                 grad: Callable[[np.ndarray], np.ndarray],

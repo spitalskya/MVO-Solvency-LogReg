@@ -11,5 +11,5 @@ def backtracking(obj_fun: Callable[[np.ndarray], float],
 
 def bisection(obj_fun: Callable[[np.ndarray], float],
               grad: Callable[[np.ndarray], np.ndarray],
-              x_0: np.ndarray, s: np.ndarray) -> OptimizeResult:
+              x_0: np.ndarray, s: np.ndarray = []) -> OptimizeResult:
     pass
