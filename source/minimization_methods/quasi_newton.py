@@ -1,78 +1,95 @@
-from typing import Callable
+from typing import Callable, Optional
 import numpy as np
-from scipy.optimize import OptimizeResult, minimize
+from scipy.optimize import OptimizeResult, minimize, approx_fprime
 from minimization_methods.minimization_in_direction import bisection, backtracking
 
 
 def BFGS(obj_fun: Callable[[np.ndarray], float],
-         grad: Callable[[np.ndarray], np.ndarray],
-         x0: np.ndarray, step: str) -> OptimizeResult:
-    # ! document
+         grad: Optional[Callable[[np.ndarray], np.ndarray]],
+         x0: np.ndarray, step: str, args=(), 
+         callback=None, **kwargs) -> OptimizeResult:
     """_summary_
 
     Args:
         obj_fun (Callable[[np.ndarray], float]): _description_
-        grad (Callable[[np.ndarray], np.ndarray]): _description_
+        grad (Optional[Callable[[np.ndarray], np.ndarray]]): _description_
         x0 (np.ndarray): _description_
         step (str): _description_
+        args (tuple, optional): _description_. Defaults to ().
+        callback (_type_, optional): _description_. Defaults to None.
+
     Returns:
         OptimizeResult: _description_
-    """
+    """    
     
+    step_optimizer: callable
     if step == "optimal":
         step_optimizer = bisection
     elif step == "suboptimal":
         step_optimizer = backtracking
+        
+    if grad is None:
+        def grad(x: np.ndarray, *args) -> np.ndarray:
+            return approx_fprime(x, obj_fun, *args)
+        
+    g = grad(x0, *args)
+        
+    H: np.ndarray = np.identity(x0.shape[0])
+    x: np.ndarray = x0
     
-    g = grad(x0)
-    H = np.identity(x0.shape[0])
-    x = x0
+    maxiter: int = kwargs.get("maxiter", 1000)
+    tol: float = kwargs.get("tol", 10e-3)
     
-    maxiter = 1000
-    tol = 1e-3
-    nfev = 0
-    njev = 1
+    nfev: int = 0
+    njev: int = 1
+    trajectory: list[np.ndarray] = [x]
     
     for it in range(1, maxiter + 1):
-        s = -H @ g
+        s: np.ndarray = -H @ g
         
         # TODO 
         """
-        step_optimizer_result = step_optimizer(obj_fun, grad, x0, s
+        step_optimizer_result: OptimizeResult = step_optimizer(obj_fun, grad, x0, s)
         nfev += step_optimizer_result.nfev
         njev += step_optimizer_result.njev
-        lam = step_optimizer_result.x[0]
+        lam: float = step_optimizer_result.x
         """
-        lam = (minimize(lambda lam: obj_fun(x + lam * s), 0).x)[0]
-        if (lam == 0): break        # should not happen?
+        lam: float = (minimize(lambda lam: obj_fun(x + lam * s), 0).x)[0]
+        if (lam == 0): lam=10e-10        # ! should not happen?
         
-        x_plus = x + lam * s
-        g_plus = grad(x_plus)
+        # calculate next x
+        x_plus: np.ndarray = x + lam * s
+        g_plus: np.ndarray = grad(x_plus, *args)
+        trajectory.append(x_plus.copy())
         
-        y = g_plus - g
-        p = x_plus - x
+        y: np.ndarray = g_plus - g
+        p: np.ndarray = x_plus - x
         
-        # TODO callback
+        if callback:
+            callback(x_plus)
         
         if np.linalg.norm(g_plus) < tol:
             break
         
         # H+ calculation
         yp_outer: np.ndarray = np.outer(y, p)
-        denominator: float = p @ y
-        H += (1 + (y @ H @ y)/denominator) * ((np.outer(p, p)) / denominator) - (H @ yp_outer + yp_outer @ H) / denominator
+        denominator: float = np.dot(p, y)
+        H += ((1 + (y @ H @ y)/denominator) * ((np.outer(p, p)) / denominator)
+               - (H @ yp_outer + yp_outer @ H) / denominator)
         
         x = x_plus
         g = g_plus
         
+    msg: str
+    success: bool
     if np.linalg.norm(g_plus) < tol:
         msg, success = "Optimization successful", True
     else:
         msg, success = "Optimization not successful", False
     
-    return OptimizeResult(x=x_plus, success=success, message=msg,
+    return OptimizeResult(x=x_plus, trajectory=trajectory, 
+                          success=success, message=msg,
                           nit=it, nfev=nfev, njev=njev+it)
-
 
 
 def DFP(obj_fun: Callable[[np.ndarray], float],
@@ -138,8 +155,8 @@ def main() -> None:
     
     # simple test of methods
     x = np.zeros(4)
-    print(BFGS(f1, df1, x, "suboptimal").x)
-    # print(DFP(f1, df1, x, "suboptimal").x)
+    print(BFGS(f1, df1, x, "suboptimal", ()))
+    # print(DFP(f1, df1, x, "suboptimal", ()))
     print(minimize(f1, x).x)
 
 if __name__ == "__main__":
