@@ -3,5 +3,73 @@
 \begin{document}
 \section{Odvodenie účelovej funkcie a jej gradientu}\label{sec:AB}
 
+V tejto časti sa budeme venovať odvodzovaniu účelovej funkcie a jej gradientu, ktorú v neskorších častiach budeme minimalizovať, pomocou čoho vytvoríme model na binárnu klasifikáciu. 
+
+Do logistickej funkcie $g(z) = \frac{1}{1+e^{-z}}$, ktorá bude odhadovať pravdepodobnosť solventnosti klienta, budeme dosádzať hodnoty $z=x^Tu^i$ pre vektor parametrov $x = (x_0,\dots,x_3)$ a vektor údajov o klientovi $u^i = (1, u_1^i, u_2^i, u_3^i)$, pre $i=1,\dots,m$. 
+
+Chceme odhadnúť zložky vektora $x$ tak, aby čo najvierohodnejšie predpovedal solventnosť vzhľadom na naše dáta. To vedie k optimalizačnej úlohe:
+
+\begin{align*}
+	\min~&J(x) \\
+	 &x \in \mathbb{R}^4
+\end{align*}
+
+kde
+
+\begin{equation*}
+	J(x) = -\sum_{i=1}^{m}v^i \ln \left(g\left(x^Tu^i\right)\right) 
+			+ (1-v^i) \ln \left(1 - g\left(x^Tu^i\right)\right)
+\end{equation*}
+
+Z predpisu funkcie si môžeme všimnúť, že suma nadobúda záporné hodnoty, čiže $J(x)$ nadobúda kladné hodnoty. Taktiež si môžeme všimnúť, že ak je klient $i$ solventný, čiže $v^i=1$ a pre nejaký vektor parametrov $x$ je hodnota $g\left(x^Tu^i\right)$ blízka nule, má to za následok \enquote{výrazné} zvyšovanie hodnoty účelovej funkcie. Podobnou logikou vidíme zvyšovanie hodnoty účelovej funkcie pre nesolventných klientov, ak pomocou vektora $x$ mu prisúdime veľkú pravdepodobnosť solventnosti hodnotou $g\left(x^Tu^i\right)$. Chceme teda nájsť taký vektor $x$, že $g\left(x^Tu^i\right)$ bude blízke 1 pre solvetného klienta a blízke 0 pre nesolventného.
+
+\subsection{Kompaktnejší tvar účelovej funkcie}
+
+Pre lepšiu manipuláciu a neskoršiu implementáciu si zjednodušíme tvar účelovej funkcie nasledovne:
+
+\begin{align*}
+	J(x) &= -\sum_{i=1}^{m}v^i \ln \left(g\left(x^Tu^i\right)\right) 
+	+ (1-v^i) \ln \left(1 - g\left(x^Tu^i\right)\right) \\
+	&= -\sum_{i=1}^{m}v^i \ln \left(\left(1 + e^{-x^Tu^i}\right)^{-1}\right)
+	+ (1-v^i) \ln \left(\frac{e^{-x^Tu^i}}{1 + e^{-x^Tu^i}}\right) \\
+	&= -\sum_{i=1}^{m} -v^i \ln \left(1 + e^{-x^Tu^i}\right)
+	+ (1-v^i) \left(\ln \left(e^{-x^Tu^i}\right) - \ln \left(1 + e^{-x^Tu^i}\right)\right) \\
+	&= -\sum_{i=1}^{m} -v^i \ln \left(1 + e^{-x^Tu^i}\right)
+	- (1-v^i) x^Tu^i - (1-v^i) \ln \left(1 + e^{-x^Tu^i}\right) \\
+	&= \sum_{i=1}^{m} (1-v^i) x^Tu^i + \ln \left(1 + e^{-x^Tu^i}\right)
+\end{align*}
+
+S takýmto vyjadrením funkcie $J(x)$ budeme pracovať v nasledujúcich častiach.
+
+\subsection{Gradient účelovej funkcie}
+
+Vyjadríme si najprv parciálnu deriváciu podľa $x_0$, potom podľa $x_{j}, j=1,2,3$, keďže tie sa správajú symetricky.
+
+\begin{align*}
+	\frac{\partial}{\partial x_0} J(x) &= \frac{\partial}{\partial x_0} \sum_{i=1}^{m} (1-v^i) x^Tu^i + \ln \left(1 + e^{-x^Tu^i}\right)\\
+	&= \sum_{i=1}^{m} \frac{\partial}{\partial x_0} \left((1-v^i)(x_0 + x_1u_1^i + x_2u_2^i + x_3u_3^i) + \ln \left(1 + e^{-x^Tu^i}\right) \right)\\
+	&= \sum_{i=1}^{m} (1-v^i) - \frac{e^{-x^Tu^i}}{1 + e^{-x^Tu^i}}\\
+	&= \sum_{i=1}^{m} 1-v^i - \frac{1}{1 + e^{x^Tu^i}}\\
+\end{align*}
+
+\begin{align*}
+	\frac{\partial}{\partial x_j} J(x) &= \frac{\partial}{\partial x_j} \sum_{i=1}^{m} (1-v^i) x^Tu^i + \ln \left(1 + e^{-x^Tu^i}\right)\\
+	&= \sum_{i=1}^{m} \frac{\partial}{\partial x_j} \left((1-v^i)(x_0 + x_1u_1^i + x_2u_2^i + x_3u_3^i) + \ln \left(1 + e^{-x^Tu^i}\right) \right)\\
+	&= \sum_{i=1}^{m} (1-v^i)u_j^i - u_j^i\frac{ e^{-x^Tu^i}}{1 + e^{-x^Tu^i}}\\
+	&= \sum_{i=1}^{m} \left(1-v^i - \frac{1}{1 + e^{x^Tu^i}}\right)u_j^i && j=1,2,3\\
+\end{align*}
+
+Toto vieme kompaktne zapísať nasledovne:
+
+\begin{equation*}
+	\nabla J(x) = \sum_{i=1}^{m} 
+	\begin{pmatrix}
+		1 \\
+		u_1^i \\
+		u_2^i \\
+		u_3^i 
+	\end{pmatrix}
+	\left(1-v^i - \frac{1}{1 + e^{x^Tu^i}}\right)
+\end{equation*}
 
 \end{document}
