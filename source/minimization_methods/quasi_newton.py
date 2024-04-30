@@ -1,7 +1,7 @@
 from typing import Callable
 import numpy as np
 from scipy.optimize import OptimizeResult, minimize, approx_fprime
-from typing import Literal
+from typing import Literal, Any
 from source.minimization_methods.minimization_in_direction import bisection, backtracking
 
 
@@ -14,6 +14,7 @@ def BFGS(obj_fun: Callable[[np.ndarray], float],
 def DFP(obj_fun: Callable[[np.ndarray], float],
         grad: Callable[[np.ndarray], np.ndarray],
         x_0: np.ndarray, step: Literal["optimal", "suboptimal"],
+        args: tuple[Any]=(),
         callback: Callable[[np.ndarray], None] = None, **kwargs) -> OptimizeResult:
     """
     Minimizes the objective function using the DFP method.
@@ -35,7 +36,7 @@ def DFP(obj_fun: Callable[[np.ndarray], float],
         def grad(x: np.ndarray, *args) -> np.ndarray:
             return approx_fprime(x, obj_fun, *args)
 
-    g = grad(x_0)
+    g = grad(x_0, *args)
 
     H = np.identity(x_0.shape[0])
     x = x_0
@@ -53,9 +54,9 @@ def DFP(obj_fun: Callable[[np.ndarray], float],
         s = -H @ g
 
         # find optimal step size
-        step_len = minimize(lambda step_size: obj_fun(x + step_size * s), np.zeros(x.shape[0])).x[0]
-        # if step_len == 0:
-        #     step_len = 10e-10
+        step_len = minimize(lambda step_size: obj_fun(x + step_size * s), np.zeros(1)).x[0]
+        if step_len == 0:
+            step_len = 10e-10
 
         # compute next x
         x_plus = x + step_len * s
@@ -71,11 +72,14 @@ def DFP(obj_fun: Callable[[np.ndarray], float],
             break
 
         # compute another Hessian
-        s_k = step_len * s
+        p_k = x_plus - x
         y_k = g_plus - g
-        z_k = H @ y_k
-
-        H = H + (np.outer(s_k, s_k) / np.inner(s_k, y_k)) - (np.outer(z_k, z_k) / np.inner(y_k, z_k))
+        H += (np.outer(p_k, p_k) / np.inner(p_k, y_k)) - ((H@np.outer(y_k, y_k)@H) / (y_k@H@y_k))
+        # s_k = step_len * s
+        # y_k = g_plus - g
+        # z_k = H @ y_k
+        #
+        # H = H + (np.outer(s_k, s_k) / np.inner(s_k, y_k)) - (np.outer(z_k, z_k) / np.inner(y_k, z_k))
 
         # assign next x, g
         x = x_plus
