@@ -45,7 +45,7 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
         grad = lambda x: approx_fprime(x, obj_fun, args=args)
 
     maxiter: int = kwargs.get("maxiter", 10_000)
-    tol: float = kwargs.get("tol", 1e-6)
+    tol: float = kwargs.get("tol", 10e-3)
     x: np.ndarray = np.array(x_0, dtype=np.float64)
     trajectory: list[np.ndarray] = [x]
 
