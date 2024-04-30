@@ -3,3 +3,7 @@ solvency_reg:
 
 test:
 	python -m minimization_methods.quasi_newton
+
+visualize:
+	python -m visualizer
+	

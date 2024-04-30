@@ -207,6 +207,3 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
     
     return OptimizeResult(x=(a+b)/2, success=success, message=msg, 
                           nit=it, tol=tol, interval=(a, b), njev=njev, nfev=0)
-
-    
-
