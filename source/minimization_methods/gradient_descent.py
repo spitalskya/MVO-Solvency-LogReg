@@ -1,11 +1,11 @@
-from typing import Callable
+from typing import Callable, Optional
 import numpy as np
 from scipy.optimize import OptimizeResult, approx_fprime
 from minimization_methods.minimization_in_direction import bisection
 
 def optimalStep(obj_fun: Callable[[np.ndarray], float],
-                grad: Callable[[np.ndarray], np.ndarray],
-                x_0: np.ndarray, args: tuple[float], callback: Callable=None, options={}) -> OptimizeResult:
+                grad: Optional[Callable[[np.ndarray], np.ndarray]],
+                x_0: np.ndarray, args: tuple[float]=(), callback: Callable=None, **kwargs) -> OptimizeResult:
     """_summary_
     Args:
         obj_fun : callable f(x, *args)
@@ -42,20 +42,24 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
     if x_0 is None:
         raise ValueError("Must provide initial guess `x0`!")
     if grad is None:
-        grad = lambda x: approx_fprime(x, obj_fun, args=args)
+        def grad(x: np.ndarray, *args) -> np.ndarray:
+            return approx_fprime(x, obj_fun, *args)
 
-    maxiter: int = options.get("maxiter", 10_000)
-    tol: float = options.get("tol", 1e-6)
+    maxiter: int = kwargs.get("maxiter", 10_000)
+    tol: float = kwargs.get("tol", 1e-3)
     x: np.ndarray = np.array(x_0, dtype=np.float64)
+    trajectory: np.ndarray[np.ndarray] = [x]
+
+
     it: int
     for it in range(1, maxiter + 1):
         grad_value: np.ndarray = grad(x, *args)
         if np.linalg.norm(grad_value) < tol:
             break
-        stepsize:float = bisection(obj_fun, grad, x).x
+        stepsize: float = bisection(obj_fun, grad, x).x
 
         x -= stepsize * grad_value
-
+        trajectory.append(x.copy())
         if callback is not None:
             callback(x)
 
@@ -71,8 +75,8 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
 
 
 def constantStep(obj_fun: Callable[[np.ndarray], float],
-                 grad: Callable[[np.ndarray], np.ndarray],
-                 x_0: np.ndarray, args: tuple[float], callback: Callable=None,  options= {}) -> OptimizeResult:
+                 grad: Optional[Callable[[np.ndarray], np.ndarray]],
+                 x_0: np.ndarray, args: tuple[float] = (), callback: Callable=None,  **kwargs) -> OptimizeResult:
     """_summary_
     Args:
     obj_fun : callable f(x, *args)
@@ -109,13 +113,15 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
     if x_0 is None:
         raise ValueError("Must provide initial guess `x_0`!")
     if grad is None:
-        grad = lambda x: approx_fprime(x, obj_fun, args=args)
+        def grad(x: np.ndarray, *args) -> np.ndarray:
+            return approx_fprime(x, obj_fun, *args)
 
-    maxiter: int = options.get("maxiter", 1000)
-    tol: float = options.get("tol", 1e-6)
+    maxiter: int = kwargs.get("maxiter", 1000)
+    tol: float = kwargs.get("tol", 1e-3)
 
     x: np.ndarray = np.array(x_0, dtype=np.float64)
-    stepsize: float = options.get("stepsize")
+    stepsize: float = kwargs.get("stepsize", 1e-5)
+    trajectory: np.ndarray[np.ndarray] = [x]
 
     it: int
     for it in range(1, maxiter+1):
@@ -125,6 +131,7 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
             break
 
         x -= stepsize * grad
+        trajectory.append(x.copy())
 
         if callback is not None:
             callback(x)
