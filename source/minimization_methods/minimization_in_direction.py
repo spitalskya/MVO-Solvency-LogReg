@@ -192,12 +192,12 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         if callback is not None:
             callback(midpoint)
         
-        if np.dot(grad_value, s) < tol:
+        if np.abs(np.dot(grad_value, s)) < tol:
             break
 
         njev += 1
     
-    success: bool = np.dot(grad_value, s) < tol
+    success: bool = np.abs(np.dot(grad_value, s)) < tol
 
     msg: str
     if success:
@@ -205,8 +205,8 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
     else:
         msg = "Optimatization failed"
     
-    return OptimizeResult(x=(a+b)/2, success=success, message=msg,
-                          nit=it, tol=tol, interval=(a, b), njev=njev, nhev=0)
+    return OptimizeResult(x=(a+b)/2, success=success, message=msg, 
+                          nit=it, tol=tol, interval=(a, b), njev=njev, nfev=0)
 
     
 
