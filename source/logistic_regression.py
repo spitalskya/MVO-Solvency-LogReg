@@ -4,13 +4,16 @@ from scipy.optimize import OptimizeResult
 from visualizer import Visualizer
 import pandas as pd
 from scipy.optimize import approx_fprime, minimize
-from minimization_methods.minimization_in_direction import backtracking
+import minimization_methods.gradient_descent
+from minimization_methods.quasi_newton import BFGS, DFP
 
 class LogisticRegression:
     
     
     _u: np.ndarray[np.ndarray[int]]
     _v: np.ndarray[int]
+    _x0: np.ndarray[int]
+    _x_min: np.ndarray[float]
     
     _solution: OptimizeResult | None
     
@@ -18,6 +21,7 @@ class LogisticRegression:
     def __init__(self, u: np.ndarray[np.ndarray[int]], v: np.ndarray[int]) -> None:
         self._u = u
         self._v = v
+        self._x0 = np.array([0,0,0,0])
     
     def objective_function(self, x: np.ndarray) -> float:
         return np.sum((1 - self._v) * np.dot(self._u, x) + np.log(1 + np.exp(-np.dot(self._u, x))))
@@ -26,17 +30,28 @@ class LogisticRegression:
         result: np.ndarray[float] = np.dot(self._u.T, (1 - self._v - (1 / (1 + np.exp(np.dot(self._u, x))))))
         return result
 
-    def fit(self):
-        self.x = minimize(self.objective_function, np.array([0,0,0,0]), jac=self.gradient).x
+    def fit(self, method: str=None, step_selection: str=None) -> None:
+        if method is None or step_selection is None:
+            raise ValueError("Method and step selection must be set")
+        
+        if method == "BFGS":
+            self._x_min = BFGS(self.objective_function, self.gradient, x_0=self._x0, step=step_selection).x
+        elif method == "DFP":
+            self._x_min = DFP(self.objective_function, self.gradient, self._x0, step_selection).x
+        else:
+            self._x_min = minimize(self.objective_function, self._x0, jac=self.gradient).x
 
     
     def get_result(self, method: str=None, step_selection: str=None) -> OptimizeResult:
         ...
     
-    def predict(self, u: np.ndarray[np.ndarray[int]]) -> float:
+    def sigmoid(self, u: np.ndarray) -> float:
+        return 1 / (1 + np.exp(-np.dot(self._x_min, u)))
+    
+    def predict(self, u: np.ndarray[np.ndarray[int]]) -> list[float]:
         result: list = []
         for i in u:
-            result.append(1 / (1 + np.exp(-np.dot(self.x, i))))
+            result.append(self.sigmoid(i))
         return result
     
     def visualize(self, ax: Axes):
