@@ -1,7 +1,7 @@
 from typing import Callable, Optional
 import numpy as np
 from scipy.optimize import OptimizeResult, approx_fprime
-from minimization_in_direction import bisection
+from minimization_methods.minimization_in_direction import bisection
 
 def optimalStep(obj_fun: Callable[[np.ndarray], float],
                 grad: Optional[Callable[[np.ndarray], np.ndarray]],
@@ -42,13 +42,13 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
     if x_0 is None:
         raise ValueError("Must provide initial guess `x0`!")
     if grad is None:
-        grad = lambda x: approx_fprime(x, obj_fun, args=args)
+        def grad(x: np.ndarray, *args) -> np.ndarray:
+            return approx_fprime(x, obj_fun, *args)
 
     maxiter: int = kwargs.get("maxiter", 10_000)
-    tol: float = kwargs.get("tol", 10e-3)
+    tol: float = kwargs.get("tol", 1e-3)
     x: np.ndarray = np.array(x_0, dtype=np.float64)
     trajectory: list[np.ndarray] = [x]
-
 
     it: int
     for it in range(1, maxiter + 1):
@@ -112,14 +112,16 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
     if x_0 is None:
         raise ValueError("Must provide initial guess `x_0`!")
     if grad is None:
-        grad = lambda x: approx_fprime(x, obj_fun, args=args)
+        def grad(x: np.ndarray, *args) -> np.ndarray:
+            return approx_fprime(x, obj_fun, *args)
 
     maxiter: int = kwargs.get("maxiter", 1000)
-    tol: float = kwargs.get("tol", 10e-3)
+    tol: float = kwargs.get("tol", 1e-3)
 
     x: np.ndarray = np.array(x_0, dtype=np.float64)
     stepsize: float = kwargs.get("stepsize")
     trajectory: list[np.ndarray] = [x]
+
 
     it: int
     for it in range(1, maxiter+1):
