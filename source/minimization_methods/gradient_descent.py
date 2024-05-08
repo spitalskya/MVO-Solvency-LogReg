@@ -44,19 +44,18 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
     if grad is None:
         def grad(x: np.ndarray, *args) -> np.ndarray:
             return approx_fprime(x, obj_fun, *args)
-
-    maxiter: int = kwargs.get("maxiter", 10_000)
+    maxiter: int = kwargs.get("maxiter", 1000)
     tol: float = kwargs.get("tol", 1e-3)
     x: np.ndarray = np.array(x_0, dtype=np.float64)
-    trajectory: list[np.ndarray] = [x]
+    trajectory: list[np.ndarray] = [x.copy()]
 
     it: int
     for it in range(1, maxiter + 1):
         grad_value: np.ndarray = grad(x, *args)
         if np.linalg.norm(grad_value) < tol:
             break
-        stepsize: float = bisection(obj_fun, grad, x).x
-
+        stepsize: float = bisection(obj_fun=obj_fun, grad=grad, x_0=x, args=args, s=-grad_value).x
+        print("STEPSIZE", stepsize)
         x -= stepsize * grad_value
         trajectory.append(x.copy())
         if callback is not None:
@@ -69,7 +68,9 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
     else:
         msg = "Optimization failed"
 
-    return OptimizeResult(x=x, success=success, message=msg, nit=it, njev = it)
+    return OptimizeResult(x=x, success=success, 
+                          message=msg, nit=it, 
+                          njev=it, trajectory=trajectory)
     
 
 
@@ -119,9 +120,8 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
     tol: float = kwargs.get("tol", 1e-3)
 
     x: np.ndarray = np.array(x_0, dtype=np.float64)
-    stepsize: float = kwargs.get("stepsize")
-    trajectory: list[np.ndarray] = [x]
-
+    stepsize: float = kwargs.get("stepsize", 1e-1)
+    trajectory: list[np.ndarray] = [x.copy()]
 
     it: int
     for it in range(1, maxiter+1):
@@ -129,8 +129,7 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
 
         if np.linalg.norm(grad_value) < tol:
             break
-
-        x -= stepsize * grad
+        x -= stepsize * grad_value
         trajectory.append(x.copy())
 
         if callback is not None:
@@ -144,5 +143,7 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
     else:
         msg = "Optimization failed"
 
-    return OptimizeResult(x=x, success=success, message=msg, grad_value=grad_value, callback=callback, nit=it, njev=it)
+    return OptimizeResult(x=x, success=success, message=msg,
+                          grad_value=grad_value, 
+                          nit=it, njev=it, trajectory=trajectory)
 

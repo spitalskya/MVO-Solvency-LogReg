@@ -139,35 +139,36 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         Important attributes are: x the solution,
         See OptimizeResult for a description of other attributes.
     """
+    #print("GRAD", grad(x_0, *args))
     if x_0 is None:
         raise ValueError("Initial guess 'x0' must be provided.")
     
     if grad is None:
         def grad(x: np.ndarray, *args) -> np.ndarray:
             return approx_fprime(x, obj_fun, *args)
-    
+        
     direction_der: float = np.dot(grad(x_0, *args), s)
     njev: int = 0
 
     #getting bounds a, b
     if direction_der < 0:
-        x: np.ndarray[float]= x_0
+        x: np.ndarray[float]= np.array(x_0, dtype=np.float64)
         k: int = 1
         while True:
             x += k * s
-            if grad(x, *args) > 0:
+            if np.dot(grad(x, *args), s) > 0:
                 a: np.ndarray[float] = x - (k/2) * s
                 b: np.ndarray[float] = x
                 break
             k *= 2
             njev += 1
     
-    elif direction_der > 0:
-        x: np.ndarray[float] = x_0
+    elif direction_der >= 0:
+        x: np.ndarray[float]= np.array(x_0, dtype=np.float64)
         k: int = 1
         while True:
             x -= k * s
-            if grad(x, *args) < 0:
+            if np.dot(grad(x, *args), s) < 0:
                 a: np.ndarray[float] = x
                 b: np.ndarray[float] = x + (k/2) * s
                 break
@@ -205,5 +206,5 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
     else:
         msg = "Optimatization failed"
     
-    return OptimizeResult(x=(a+b)/2, success=success, message=msg, 
+    return OptimizeResult(x=(((a+b)/2 - x_0)/s)[0], success=success, message=msg, 
                           nit=it, tol=tol, interval=(a, b), njev=njev, nfev=0)
