@@ -47,18 +47,14 @@ def BFGS(obj_fun: Callable[[np.ndarray], float],
     
     for it in range(1, maxiter + 1):
         s: np.ndarray = np.array(-H @ g, dtype=np.float64)
-        print("norma",np.linalg.norm(s))
             
-        step_optimizer_result: OptimizeResult = step_optimizer(obj_fun=obj_fun, grad=grad, x_0=x0, s=s)
+        step_optimizer_result: OptimizeResult = step_optimizer(obj_fun=obj_fun, grad=grad, x_0=x, s=s, args=args)
         nfev += step_optimizer_result.nfev
         njev += step_optimizer_result.njev
         lam: float = step_optimizer_result.x
         
-        #lam: float = (minimize(lambda lam: obj_fun(x + lam * s), 0).x)[0]
-        print("LAMBDA",lam)
-        if (lam == 0): 
+        if np.abs(lam) < 1e-8: 
             break
-            lam=10e-5        # ! should not happen?
         
         # calculate next x
         x_plus: np.ndarray = x + lam * s
@@ -134,14 +130,17 @@ def DFP(obj_fun: Callable[[np.ndarray], float],
     trajectory: list[np.ndarray] = [x]
 
     for it in range(1, maxiter + 1):
-        # TODO: replace optimizers
         # compute direction
         s = -H @ g
 
         # find optimal step size
-        step_len = minimize(lambda step_size: obj_fun(x + step_size * s), np.zeros(1)).x[0]
-        if step_len == 0:
-            step_len = 10e-5
+        step_optimizer_result: OptimizeResult = step_optimizer(obj_fun=obj_fun, grad=grad, x_0=x, s=s, args=args)
+        nfev += step_optimizer_result.nfev
+        njev += step_optimizer_result.njev
+        step_len: float = step_optimizer_result.x
+
+        if np.abs(step_len) < 1e-8:
+            break
 
         # compute next x
         x_plus = x + step_len * s
@@ -252,8 +251,11 @@ def main() -> None:
         return A@x - h
     # simple test of methods
     x = np.zeros(2)
+
     print(BFGS(f2, df2, x, "optimal", ()).x)
-    # print(DFP(f1, df1, x, "suboptimal", ()))
+    print(BFGS(f2, df2, x, "suboptimal", ()).x)
+    print(DFP(f2, df2, x, "optimal", ()).x)
+    print(DFP(f2, df2, x, "suboptimal", ()).x)
     print(minimize(f2, x).x)
     
   

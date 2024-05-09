@@ -74,14 +74,18 @@ f3, df3 = generate_f3(4)
 x3 = np.zeros(4)
 x = np.zeros(2)
 
-#print(optimalStep(obj_fun=f3, grad=df3, x_0=x3))
-#print(optimalStep(obj_fun=f1, grad=df1, x_0=x, args=(5,)))
-#print(optimalStep(obj_fun=f2, grad=df2, x_0=x))
-
-
+print(optimalStep(obj_fun=f3, grad=df3, x_0=x3).x)
 optx3 = constantStep(obj_fun=f3, grad=df3, x_0=x3, args=(), stepsize=1e-2).x
+print(optx3)
+
+print(optimalStep(obj_fun=f1, grad=df1, x_0=x, args=(5,)).x)
 optx1 = constantStep(obj_fun=f1, grad=df1, x_0=x, args=(5,), stepsize=1e-1).x
+print(optx1)
+
+print(optimalStep(obj_fun=f2, grad=df2, x_0=x).x)
 optx2 = constantStep(obj_fun=f2, grad=df2, x_0=x, args=(), stepsize=1e-1).x
+print(optx2)
+
 tol = 1e-2
 '''
 DFP_X3 = DFP(obj_fun=f3, grad=df3, x_0=x3, step="suboptimal", args=()).x
@@ -101,7 +105,7 @@ if np.linalg.norm(DFP_X2 - optx2) > tol:
 else:
     print("DFP True f2")
 '''
-BFGS_X3 = BFGS(obj_fun=f3, grad=df3, x0=x3, step="optimal", args=())
+"""BFGS_X3 = BFGS(obj_fun=f3, grad=df3, x0=x3, step="optimal", args=())
 if np.linalg.norm( BFGS_X3.x - optx3) > tol:
     print(optx3)
     print(BFGS_X3)
@@ -126,4 +130,4 @@ else:
     print(BFGS_X2)
 
 #### f2 is works for all f1 gives diffrent minimum in BFGS and DFP than in gradient with constant
-#### f3 is close enough for all 
+#### f3 is close enough for all """

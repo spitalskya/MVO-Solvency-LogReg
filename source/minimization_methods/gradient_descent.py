@@ -55,7 +55,7 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
         if np.linalg.norm(grad_value) < tol:
             break
         stepsize: float = bisection(obj_fun=obj_fun, grad=grad, x_0=x, args=args, s=-grad_value).x
-        print("STEPSIZE", stepsize)
+
         x -= stepsize * grad_value
         trajectory.append(x.copy())
         if callback is not None:

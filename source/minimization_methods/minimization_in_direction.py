@@ -71,8 +71,6 @@ def backtracking(obj_fun: Callable[[np.ndarray], float],
     direction_der_x_0: float = np.dot(grad(x_0), s)
     success: bool
 
-    print(obj_fun(x_0 + lam * s, *args))
-    print(fun0 + alpha * lam * direction_der_x_0)
     while obj_fun(x_0 + lam * s, *args) >= fun0 + alpha * lam * direction_der_x_0:
         if it == maxiter:
             success = False
@@ -162,8 +160,8 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
             x += k * s
             dir_derivative: float = np.dot(grad(x, *args), s)
             if dir_derivative > 0:
-                a: np.ndarray[float] = x - (k/2) * s
-                b: np.ndarray[float] = x
+                a: np.ndarray[float] = x_0.copy()
+                b: np.ndarray[float] = x.copy()
                 break
             elif dir_derivative == 0:
                 found_minimum = True
@@ -178,8 +176,8 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
             x -= k * s
             dir_derivative: float = np.dot(grad(x, *args), s)
             if dir_derivative < 0:
-                a: np.ndarray[float] = x
-                b: np.ndarray[float] = x + (k/2) * s
+                a: np.ndarray[float] = x.copy()
+                b: np.ndarray[float] = x_0.copy()
                 break
             elif dir_derivative == 0:
                 found_minimum = True
@@ -196,16 +194,19 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
                           nit=it_bounds, njev=njev, nfev=0)
                 
     tol: float = kwargs.get("tol", 1e-6)
-    maxiter: int = kwargs.get("maxiter", 1000)
+    maxiter: int = kwargs.get("maxiter", 100)
     midpoint: np.ndarray[float] = (a+b) / 2
 
+    
     it: int
     for it in range(1, maxiter+1):
+        #print("a", a)
+        #print("b", b)
         value: float = np.dot(grad(midpoint, *args), s)
         if value < 0:
-            a = midpoint
+            a = midpoint.copy()
         elif value > 0:
-            b = midpoint
+            b = midpoint.copy()
         else:
             midpoint = (a+b) / 2
             break
@@ -215,13 +216,12 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         if callback is not None:
             callback(midpoint)
         
-        if (np.abs(value) < tol):
+        if (np.linalg.norm(b-a) < tol) or (np.abs(value) < tol):
             break
 
         njev += 1
     
-    #success: bool = (np.linalg.norm(b-a) < tol) or (np.abs(value) < tol)
-    success: bool = (np.abs(value) < tol)
+    success: bool = (np.linalg.norm(b-a) < tol) or (np.abs(value) < tol)
 
     msg: str
     if success:
@@ -229,8 +229,7 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
     else:
         msg = "Optimatization failed"
 
-    res: float = np.linalg.norm(midpoint - x_0) / np.linalg.norm(s)
-    print("Bisection", success, it)
+    res: float = ((midpoint - x_0) / s)[0]
     return OptimizeResult(x=res, success=success, message=msg, 
                           nit=it + it_bounds, tol=tol, njev=njev, nfev=0)
 
