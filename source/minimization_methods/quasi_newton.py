@@ -36,27 +36,29 @@ def BFGS(obj_fun: Callable[[np.ndarray], float],
     g = grad(x0, *args)
         
     H: np.ndarray = np.identity(x0.shape[0])
-    x: np.ndarray = x0
+    x: np.ndarray = np.array(x0, dtype=np.float64)
     
-    maxiter: int = kwargs.get("maxiter", 1000)
-    tol: float = kwargs.get("tol", 10e-3)
+    maxiter: int = kwargs.get("maxiter", 100)
+    tol: float = kwargs.get("tol", 1e-3)
     
     nfev: int = 0
     njev: int = 1
     trajectory: list[np.ndarray] = [x]
     
     for it in range(1, maxiter + 1):
-        s: np.ndarray = -H @ g
-        
-        # TODO 
-        """
-        step_optimizer_result: OptimizeResult = step_optimizer(obj_fun, grad, x0, s)
+        s: np.ndarray = np.array(-H @ g, dtype=np.float64)
+        print("norma",np.linalg.norm(s))
+            
+        step_optimizer_result: OptimizeResult = step_optimizer(obj_fun=obj_fun, grad=grad, x_0=x0, s=s)
         nfev += step_optimizer_result.nfev
         njev += step_optimizer_result.njev
         lam: float = step_optimizer_result.x
-        """
-        lam: float = (minimize(lambda lam: obj_fun(x + lam * s), 0).x)[0]
-        if (lam == 0): lam=10e-10        # ! should not happen?
+        
+        #lam: float = (minimize(lambda lam: obj_fun(x + lam * s), 0).x)[0]
+        print("LAMBDA",lam)
+        if (lam == 0): 
+            break
+            lam=10e-5        # ! should not happen?
         
         # calculate next x
         x_plus: np.ndarray = x + lam * s
@@ -227,13 +229,32 @@ def main() -> None:
 
         return f3, df3
     
-    f1, df1 = generate_f3(4)
+    f3, df3 = generate_f3(4)
     
+    def f1(x, a=1):
+        A = np.diag((1, a))
+        h = np.array((a, a**2))
+        return 0.5 * x@A@x - x@h
+
+    def df1(x, a=1):
+        A = np.diag((1, a))
+        h = np.array((a, a**2))
+        return A@x - h
+
+    def f2(x):
+        A = np.array([[11, 9],[9,10]])
+        h = np.array((200, 190))
+        return 0.5 * x@A@x - x@h
+
+    def df2(x):
+        A = np.array([[11, 9],[9,10]])
+        h = np.array((200, 190))
+        return A@x - h
     # simple test of methods
-    x = np.zeros(4)
-    print(BFGS(f1, df1, x, "suboptimal", ()))
+    x = np.zeros(2)
+    print(BFGS(f2, df2, x, "optimal", ()).x)
     # print(DFP(f1, df1, x, "suboptimal", ()))
-    print(minimize(f1, x).x)
+    print(minimize(f2, x).x)
     
   
 if __name__ == "__main__":
