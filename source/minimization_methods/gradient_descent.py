@@ -56,7 +56,7 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
         grad_value: np.ndarray = grad(x, *args)
         if np.linalg.norm(grad_value) < tol:
             break
-        stepsize: float = bisection(obj_fun, grad, x).x
+        stepsize: float = bisection(obj_fun=obj_fun, grad=grad, x_0=x, s=-grad_value).x
 
         x -= stepsize * grad_value
         trajectory.append(x.copy())
@@ -130,7 +130,7 @@ def constantStep(obj_fun: Callable[[np.ndarray], float],
         if np.linalg.norm(grad_value) < tol:
             break
 
-        x -= stepsize * grad
+        x -= stepsize * grad_value
         trajectory.append(x.copy())
 
         if callback is not None:

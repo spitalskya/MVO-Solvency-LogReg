@@ -58,13 +58,13 @@ class LogisticRegression:
 
         x0 = np.array([0] * u.shape[1])
         if method == "BFGS":
-            self._solution = BFGS(obj_fun=objective_function, grad=gradient, x_0=x0, step=step_selection)
+            self._solution = BFGS(obj_fun=objective_function, grad=gradient, x0=x0, step=step_selection)
         elif method == "DFP":
-            self._solution = DFP(obj_fun=objective_function, grad=gradient, x_0=x0, step_selection=step_selection)
+            self._solution = DFP(obj_fun=objective_function, grad=gradient, x_0=x0, step=step_selection)
         elif method == "Grad-Opt":
             self._solution = optimalStep(obj_fun=objective_function, grad=gradient, x_0=x0)
         elif method == "Grad-Const":
-            self._solution = constantStep(oobj_fun=objective_function, grad=gradient, x_0=x0)
+            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0)
         else:
             self._solution = minimize(objective_function, x0, jac=gradient)
 
@@ -86,39 +86,46 @@ class LogisticRegression:
 
         result: list = []
         for i in u:
-            result.append(self.sigmoid(i))
+            result.append(self._prediction_function(i))
         return result
     
     def visualize(self, ax: Axes): #Roboooooo
         # Visualizer.visualize()
         pass
 
-# df = pd.read_csv("C:/Users/antal/Desktop/matfyz/Metódy voľnej optimalizácie/MVO-Solvency-LogReg/source/data/credit_risk_train.csv")
-# df = df.to_numpy()
-#
-# v: np.ndarray = df.T[0] #tu vytiahnes vektor v z dát
-# u: np.ndarray[np.ndarray[int]] = df.T[1:].T
-#
-# ones = np.ones((u.shape[0], 1))
-# u = np.hstack((ones, u)) #horizontal stack jednotiek, brutalna funkcia do rodiny, podporujem ju
-#
-# '''hore sa pridava do matice U vektor jednotiek, to sa asi chce diat niekde inde'''
-# test: LogisticRegression = LogisticRegression(u=u, v=v)
-# print(test.fit())
-#
-# df2 = pd.read_csv("C:/Users/antal/Desktop/matfyz/Metódy voľnej optimalizácie/MVO-Solvency-LogReg/source/data/credit_risk_test.csv")
-#
-# df2 = df2.to_numpy()
-# v = df2.T[0]
-# u = df2.T[1:].T
-# ones = np.ones((u.shape[0], 1))
-# u = np.hstack((ones, u))
-# '''tu tak isto, asi sa to chce diat v classe'''
-# predicted: np.ndarray[int] = np.rint(test.predict(u=u))
-# res = []
-# for i in range(len(v)):
-#     if v[i] == predicted[i]:
-#         res.append(1)
-# '''kontrola, ci prediktnute v a povodne je dobre, asi tiez nie tu?'''
-#
-# print(len(res)/ len(v)) #percento spravnosti
+def main() -> None:
+    df = pd.read_csv("data/credit_risk_train.csv")
+    df = df.to_numpy()
+
+    v: np.ndarray = df.T[0] #tu vytiahnes vektor v z dát
+    u: np.ndarray[np.ndarray[int]] = df.T[1:].T
+
+    ones = np.ones((u.shape[0], 1))
+    u = np.hstack((ones, u)) #horizontal stack jednotiek, brutalna funkcia do rodiny, podporujem ju
+
+    '''hore sa pridava do matice U vektor jednotiek, to sa asi chce diat niekde inde'''
+    test: LogisticRegression = LogisticRegression()
+    test.fit(u=u, v=v,
+                   method="Grad-Opt", step_selection="optimal")
+    print(test.coefficients)
+
+    df2 = pd.read_csv("data/credit_risk_test.csv")
+
+    df2 = df2.to_numpy()
+    v = df2.T[0]
+    u = df2.T[1:].T
+    ones = np.ones((u.shape[0], 1))
+    u = np.hstack((ones, u))
+    
+    '''tu tak isto, asi sa to chce diat v classe'''
+    predicted: np.ndarray[int] = np.rint(test.predict(u=u))
+    res = []
+    for i in range(len(v)):
+        if v[i] == predicted[i]:
+            res.append(1)
+    '''kontrola, ci prediktnute v a povodne je dobre, asi tiez nie tu?'''
+
+    print(len(res)/ len(v)) #percento spravnosti
+
+if __name__ == "__main__":
+    main()
