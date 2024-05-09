@@ -146,64 +146,100 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         def grad(x: np.ndarray, *args) -> np.ndarray:
             return approx_fprime(x, obj_fun, *args)
     
-    direction_der: float = np.dot(grad(x_0, *args), s)
     njev: int = 0
 
+    dir_derivative_0: float = np.dot(grad(x_0, *args), s)
+
     #getting bounds a, b
-    if direction_der < 0:
-        x: np.ndarray[float]= x_0
+    found_minimum: bool = False                
+    x: np.ndarray[float] = x_0.copy()
+    it_bounds: int = 0
+    if dir_derivative_0 < 0:
         k: int = 1
         while True:
             x += k * s
-            if grad(x, *args) > 0:
+            dir_derivative: float = np.dot(grad(x, *args), s)
+            if dir_derivative > 0:
                 a: np.ndarray[float] = x - (k/2) * s
                 b: np.ndarray[float] = x
                 break
-            k *= 2
-            njev += 1
-    
-    elif direction_der > 0:
-        x: np.ndarray[float] = x_0
-        k: int = 1
-        while True:
-            x -= k * s
-            if grad(x, *args) < 0:
-                a: np.ndarray[float] = x
-                b: np.ndarray[float] = x + (k/2) * s
+            elif dir_derivative == 0:
+                found_minimum = True
                 break
             k *= 2
             njev += 1
+            it_bounds += 1
+    
+    elif dir_derivative_0 > 0:
+        k: int = 1
+        while True:
+            x -= k * s
+            dir_derivative: float = np.dot(grad(x, *args), s)
+            if dir_derivative < 0:
+                a: np.ndarray[float] = x
+                b: np.ndarray[float] = x + (k/2) * s
+                break
+            elif dir_derivative == 0:
+                found_minimum = True
+                break
+            k *= 2
+            njev += 1
+            it_bounds += 1
+    else:
+        found_minimum = True
 
+    if found_minimum:  
+        res: float = np.linalg.norm(x - x_0) / np.linalg.norm(s)
+        return OptimizeResult(x=res, success=True, message="Optimatization successful", 
+                          nit=it_bounds, tol=tol, njev=njev, nfev=0)
+                
     tol: float = kwargs.get("tol", 1e-6)
     maxiter: int = kwargs.get("maxiter", 1000)
     midpoint: float = (a+b) / 2
     
     it: int
     for it in range(1, maxiter+1):
-        grad_value: float = grad(midpoint, *args)
-        value: float = np.dot(grad_value, s)
+        value: float = np.dot(grad(midpoint, *args), s)
         if value < 0:
             a = midpoint
-        elif value >= 0:
+        elif value > 0:
             b = midpoint
-        
+        else:
+            midpoint = (a+b) / 2
+            break
+          
         midpoint = (a+b) / 2
 
         if callback is not None:
             callback(midpoint)
         
-        if np.abs(np.dot(grad_value, s)) < tol:
+        if (np.linalg.norm(b-a) < tol) or (np.abs(value) < tol):
             break
 
         njev += 1
     
-    success: bool = np.abs(np.dot(grad_value, s)) < tol
+    success: bool = (np.linalg.norm(b-a) < tol) or (np.abs(value) < tol)
 
     msg: str
     if success:
         msg = "Optimatization successful"
     else:
         msg = "Optimatization failed"
+
+    res: float = np.linalg.norm(midpoint - x_0) / np.linalg.norm(s)
     
-    return OptimizeResult(x=(a+b)/2, success=success, message=msg, 
-                          nit=it, tol=tol, interval=(a, b), njev=njev, nfev=0)
+    return OptimizeResult(x=res, success=success, message=msg, 
+                          nit=it + it_bounds, tol=tol, njev=njev, nfev=0)
+
+
+def f1(x, a=1):
+    A = np.diag((1, a))
+    h = np.array((a, a**2))
+    return 0.5 * x@A@x - x@h
+
+def df1(x, a=1):
+    A = np.diag((1, a))
+    h = np.array((a, a**2))
+    return A@x - h
+
+print(bisection(obj_fun=f1, x_0=np.array([-2, -2]), s=np.array([5, 5]), grad=df1))
