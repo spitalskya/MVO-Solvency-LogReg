@@ -119,7 +119,7 @@ def DFP(obj_fun: Callable[[np.ndarray], float],
     g = grad(x_0, *args)
 
     H = np.identity(x_0.shape[0])
-    x = x_0
+    x = np.array(x_0, dtype=np.float64)
 
     maxiter = kwargs.get("maxiter", 10000)
     tol = kwargs.get("tol", 1e-1)
@@ -131,7 +131,7 @@ def DFP(obj_fun: Callable[[np.ndarray], float],
 
     for it in range(1, maxiter + 1):
         # compute direction
-        s = -H @ g
+        s = np.array(-H @ g, dtype=np.float64)
 
         # find optimal step size
         step_optimizer_result: OptimizeResult = step_optimizer(obj_fun=obj_fun, grad=grad, x_0=x, s=s, args=args)

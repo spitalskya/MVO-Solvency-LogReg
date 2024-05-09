@@ -98,7 +98,7 @@ def main() -> None:
     df = df.to_numpy()
 
     v: np.ndarray = df.T[0] #tu vytiahnes vektor v z dát
-    u: np.ndarray[np.ndarray[int]] = df.T[1:].T
+    u: np.ndarray[np.ndarray[int]] = df.T[1:].T     # toto sa chce robit v classe
 
     ones = np.ones((u.shape[0], 1))
     u = np.hstack((ones, u)) #horizontal stack jednotiek, brutalna funkcia do rodiny, podporujem ju
@@ -106,7 +106,7 @@ def main() -> None:
     '''hore sa pridava do matice U vektor jednotiek, to sa asi chce diat niekde inde'''
     test: LogisticRegression = LogisticRegression()
     test.fit(u=u, v=v,
-                   method="Grad-Opt", step_selection="optimal")
+                   method="DFP", step_selection="optimal")
     print(test.coefficients)
 
     df2 = pd.read_csv("data/credit_risk_test.csv")
