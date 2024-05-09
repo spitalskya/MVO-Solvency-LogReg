@@ -146,42 +146,61 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         def grad(x: np.ndarray, *args) -> np.ndarray:
             return approx_fprime(x, obj_fun, *args)
     
-    direction_der: float = np.dot(grad(x_0, *args), s)
+    def fun(lam: float, *args):
+        return grad(x_0 + lam * s, *args) @ s
+    
     njev: int = 0
 
+    dir_derivative_0: float = np.dot(grad(x_0, *args), s)
+
     #getting bounds a, b
-    if direction_der < 0:
-        x: np.ndarray[float]= x_0
+    if dir_derivative_0 < 0:
+        x: np.ndarray[float] = x_0.copy()
         k: int = 1
         while True:
             x += k * s
-            if grad(x, *args) > 0:
+            dir_derivative: float = np.dot(grad(x, *args), s)
+            if dir_derivative > 0:
                 a: np.ndarray[float] = x - (k/2) * s
                 b: np.ndarray[float] = x
                 break
+            elif dir_derivative == 0:
+                print('found minimum')
+                #TODO
             k *= 2
             njev += 1
     
-    elif direction_der > 0:
-        x: np.ndarray[float] = x_0
+    elif dir_derivative_0 > 0:
+        x: np.ndarray[float] = x_0.copy()
         k: int = 1
         while True:
             x -= k * s
-            if grad(x, *args) < 0:
+            dir_derivative: float = np.dot(grad(x, *args), s)
+            if dir_derivative < 0:
                 a: np.ndarray[float] = x
                 b: np.ndarray[float] = x + (k/2) * s
                 break
+            elif dir_derivative == 0:
+                print('found minimum')
+                #TODO
             k *= 2
             njev += 1
+    else:
+        print('found minimum')
+        #TODO
+    
+    print(a, b)
 
     tol: float = kwargs.get("tol", 1e-6)
     maxiter: int = kwargs.get("maxiter", 1000)
     midpoint: float = (a+b) / 2
+
+    def fun(lam: float, *args):
+        return grad(x_0 + lam * s, *args) @ s
     
     it: int
     for it in range(1, maxiter+1):
-        grad_value: float = grad(midpoint, *args)
-        value: float = np.dot(grad_value, s)
+        value: float = np.dot(grad(midpoint, *args), s)
         if value < 0:
             a = midpoint
         elif value >= 0:
@@ -192,18 +211,34 @@ def bisection(obj_fun: Callable[[np.ndarray], float],
         if callback is not None:
             callback(midpoint)
         
-        if np.abs(np.dot(grad_value, s)) < tol:
+        if np.linalg.norm(b-a) < tol:
             break
 
         njev += 1
     
-    success: bool = np.abs(np.dot(grad_value, s)) < tol
+    success: bool = np.linalg.norm(b-a) < tol
 
     msg: str
     if success:
         msg = "Optimatization successful"
     else:
         msg = "Optimatization failed"
+    print('##############')
+    res: float = np.linalg.norm(midpoint - x_0) / np.linalg.norm(s)
+    print('##############')
     
     return OptimizeResult(x=(a+b)/2, success=success, message=msg, 
                           nit=it, tol=tol, interval=(a, b), njev=njev, nfev=0)
+
+
+def f1(x, a=1):
+    A = np.diag((1, a))
+    h = np.array((a, a**2))
+    return 0.5 * x@A@x - x@h
+
+def df1(x, a=1):
+    A = np.diag((1, a))
+    h = np.array((a, a**2))
+    return A@x - h
+
+print(bisection(obj_fun=f1, x_0=np.array([-2, -2]), s=np.array([5, 5]), grad=df1))
