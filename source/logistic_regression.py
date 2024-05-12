@@ -9,6 +9,8 @@ from scipy.optimize import minimize
 from sklearn.metrics import precision_score
 from minimization_methods.gradient_descent import optimalStep, constantStep
 from minimization_methods.quasi_newton import BFGS, DFP
+# FIXME: consider suppressing RuntimeWarning: overflow encountered in exp
+#   return np.dot(u.T, (1 - v - (1 / (1 + np.exp(np.dot(u, x))))))
 
 
 class LogisticRegression:
