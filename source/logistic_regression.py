@@ -1,13 +1,14 @@
+from typing import Callable, Literal
+from warnings import warn
+
 import numpy as np
+import pandas as pd
 from matplotlib.pyplot import Axes
 from scipy.optimize import OptimizeResult
-from typing import Optional, Callable
-from visualizer import Visualizer
-import pandas as pd
-from scipy.optimize import approx_fprime, minimize
-from minimization_methods.quasi_newton import BFGS, DFP
+from scipy.optimize import minimize
+from sklearn.metrics import precision_score
 from minimization_methods.gradient_descent import optimalStep, constantStep
-from warnings import warn
+from minimization_methods.quasi_newton import BFGS, DFP
 
 
 class LogisticRegression:
@@ -31,16 +32,16 @@ class LogisticRegression:
             u: np.ndarray[np.ndarray],
             v: np.ndarray[float],
             method: str | None = None,
-            step_selection: str | None = None) -> None:
+            step_selection: Literal["optimal", "suboptimal"] | None = None) -> None:
         """
         Fits the regression, i.e., finds optimal coefficients
         for a sigmoid function which describes given data the best. Stores the function.
         Parameters
         ----------
-        u:
-        v
-        method
-        step_selection
+        u: matrix with data to learn from
+        v: vector with classification values corresponding to given u matrix.
+        method: which optimization method to use to acquire sigmoid function
+        step_selection: which method to use to find the step for a method.
         Returns
         -------
         """
@@ -56,6 +57,9 @@ class LogisticRegression:
         def gradient(x: np.ndarray) -> np.ndarray[float]:
             return np.dot(u.T, (1 - v - (1 / (1 + np.exp(np.dot(u, x))))))
 
+        ones = np.ones((u.shape[0], 1))
+        u = np.hstack((ones, u))
+
         x0 = np.array([0] * u.shape[1])
         if method == "BFGS":
             self._solution = BFGS(obj_fun=objective_function, grad=gradient, x0=x0, step=step_selection)
@@ -70,62 +74,97 @@ class LogisticRegression:
 
         self.coefficients = self._solution.x
 
-        def sigmoid(u: np.ndarray) -> float:
-            return 1 / (1 + np.exp(-np.dot(self.coefficients, u)))
+        def sigmoid(u_for_pred: np.ndarray[np.ndarray]) -> np.ndarray[float]:
+            return 1 / (1 + np.exp(-np.inner(self.coefficients, u_for_pred)))
 
         self._prediction_function = sigmoid
 
         self.fitted = True
 
     def get_result(self) -> OptimizeResult:
+        """
+        Returns the OptimizeResult from method optimization running.
+        Returns
+        -------
+        OptimizeResult with all the data.
+        """
         return self._solution
 
-    def predict(self, u: np.ndarray[np.ndarray[int]]) -> list[float]:
+    def predict_proba(self, u: np.ndarray[np.ndarray[int]]) -> np.ndarray[float]:
+        """
+        Returns predictions probabilities from given u.
+        Parameters
+        ----------
+        u: matrix from which to make predictions.
+
+        Returns
+        -------
+        array of predicted probabilities
+        """
         if not self.fitted:
             raise ValueError("Can't use predict on a non-fitted model!")
+        ones = np.ones((u.shape[0], 1))
+        u = np.hstack((ones, u))
 
-        result: list = []
-        for i in u:
-            result.append(self._prediction_function(i))
+        # noinspection PyTypeChecker
+        result = self._prediction_function(u)
+
+        # TODO: delete comment after review
+        # result: list = []
+        # for i in u:
+        #     result.append(self._prediction_function(i))
+
         return result
+
+    def predict(self, u: np.ndarray[np.ndarray[int]]) -> np.ndarray[float]:
+        """
+        Returns predicted values with probabilities rounded.
+        Parameters
+        ----------
+        u: matrix from which to make predictions.
+        Returns
+        -------
+        array of predicted values i.e. array with 0-oes or 1-s.
+        """
+        return np.rint(self.predict_proba(u))
     
-    def visualize(self, ax: Axes): #Roboooooo
+    def visualize(self, ax: Axes):
+        # TODO: implement this
+        """
+        Visualizes the trajectory.
+        Parameters
+        ----------
+        ax: Matplotlib axes object to plot to.
+        Returns
+        -------
+        """
         # Visualizer.visualize()
         pass
 
+
 def main() -> None:
-    df = pd.read_csv("data/credit_risk_train.csv")
-    df = df.to_numpy()
+    train = pd.read_csv("data/credit_risk_train.csv")
+    u_train, v_train = train.drop("Creditability", axis="columns").to_numpy(), train["Creditability"].to_numpy()
 
-    v: np.ndarray = df.T[0] #tu vytiahnes vektor v z dát
-    u: np.ndarray[np.ndarray[int]] = df.T[1:].T     # toto sa chce robit v classe
+    log_reg = LogisticRegression()
 
-    ones = np.ones((u.shape[0], 1))
-    u = np.hstack((ones, u)) #horizontal stack jednotiek, brutalna funkcia do rodiny, podporujem ju
+    log_reg.fit(u=u_train, v=v_train, method="DFP", step_selection="optimal")
+    print(log_reg.coefficients)
 
-    '''hore sa pridava do matice U vektor jednotiek, to sa asi chce diat niekde inde'''
-    test: LogisticRegression = LogisticRegression()
-    test.fit(u=u, v=v,
-                   method="DFP", step_selection="optimal")
-    print(test.coefficients)
+    test = pd.read_csv("data/credit_risk_test.csv")
+    u_test = test.drop("Creditability", axis="columns").to_numpy()
+    v_real, v_pred = test["Creditability"].to_numpy(), log_reg.predict(u_test)
 
-    df2 = pd.read_csv("data/credit_risk_test.csv")
+    print(precision_score(v_real, v_pred))
 
-    df2 = df2.to_numpy()
-    v = df2.T[0]
-    u = df2.T[1:].T
-    ones = np.ones((u.shape[0], 1))
-    u = np.hstack((ones, u))
-    
-    '''tu tak isto, asi sa to chce diat v classe'''
-    predicted: np.ndarray[int] = np.rint(test.predict(u=u))
+    # FIXME: does not much our precision score
+    predicted: np.ndarray[int] = np.rint(log_reg.predict(u=u_test))
     res = []
-    for i in range(len(v)):
-        if v[i] == predicted[i]:
+    for i in range(len(v_real)):
+        if v_real[i] == predicted[i]:
             res.append(1)
-    '''kontrola, ci prediktnute v a povodne je dobre, asi tiez nie tu?'''
+    print(len(res) / len(v_real))
 
-    print(len(res)/ len(v)) #percento spravnosti
 
 if __name__ == "__main__":
     main()
