@@ -11,7 +11,7 @@ from visualizer import Visualizer
 import matplotlib.pyplot as plt
 from minimization_methods.gradient_descent import optimalStep, constantStep
 from minimization_methods.quasi_newton import BFGS, DFP
-# FIXME: consider suppressing RuntimeWarning: overflow encountered in exp
+# FIXME: consider suppressing or solving RuntimeWarning: overflow encountered in exp
 #   return np.dot(u.T, (1 - v - (1 / (1 + np.exp(np.dot(u, x))))))
 
 
@@ -113,7 +113,7 @@ class LogisticRegression:
         # noinspection PyTypeChecker
         result = self._prediction_function(u)
 
-        # TODO: delete comment after review
+        # TODO: delete comment after review; the precision scores do not match
         # result: list = []
         # for i in u:
         #     result.append(self._prediction_function(i))
@@ -132,7 +132,7 @@ class LogisticRegression:
         """
         return np.rint(self.predict_proba(u))
     
-    def visualize(self, ax: Axes):
+    def visualize(self, ax: Axes) -> None:
         # FIXME: review the visualizations
         """
         Visualizes the trajectory.
