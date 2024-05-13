@@ -2,7 +2,45 @@
 
 \begin{document}   
 
-\section{Riešenie úlohy pomocou kvázinewtonovských metód}\label{sec:CD}
+\section{Riešenie optimalizačnej úlohy}\label{sec:CD}
 
+V tejto časti sa venujeme riešeniu optimalizačnej úlohy \ref{eq:objf} rôznymi metódami. Tie boli implementované v Pythone. Konkrétne sme implementovali gradientné metódy (s optimálnou a konštnantou dĺžkou kroku) a kvázinewtonovské metódy BFGS a DFP (s približne optimálnou dĺžkou kroku nájdenou backtracking-om alebo s optimálnou dĺžkou kroku, nájdenou bisekciou). 
+
+Ako štartovací bod sme pri každej metóde volili $x_0 = (0,0,0,0)^T$ a ako kritérium optimality bolo použité $||\nabla J(x^k)|| \leq 10^{-3}$. Optimálnym bodom bude teda vektor parametrov $x$, ktorý budeme používať v logistickej funkcii na odhadovanie solventnosti klienta podľa jeho dát.
+	
+\subsection{Kvázinewtonovské metódy}
+
+
+
+\textcolor{red}{\textbf{\Large{ZLÉ  HODNOTY}}}
+\begin{center}
+	\small
+	\begin{tabular}{| c | c  c  c  c |}
+		\hline
+		 & BFGS + backtracking & BFGS + bisekcia & DFP + backtracking & DFP + bisekcia \\
+		\hline
+		$x_0$ & 0.128 & 0.128 & 0.208 & 0.208 \\
+		$x_1$ & -0.044 & -0.044 & -0.047 & -0.047 \\
+		$x_2$ & 0.304 &  0.304 & 0.315 & 0.315 \\
+		$x_3$ & 0.309 & 0.309 & 0.307 & 0.307 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Gradientné metódy}
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c  c |}
+		\hline
+		& optimálny krok & konštantný krok \\
+		\hline
+		$x_0$ & 0.164 & -323.9  \\
+		$x_1$ & -0.047 & -198.3  \\
+		$x_2$ & 0.318 &  894.4  \\
+		$x_3$ & 0.315 & 608.2  \\
+		\hline
+	\end{tabular}
+\end{center}
 
 \end{document}
