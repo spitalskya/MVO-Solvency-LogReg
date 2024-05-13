@@ -133,7 +133,7 @@ class LogisticRegression:
         return np.rint(self.predict_proba(u))
     
     def visualize(self, ax: Axes):
-        # TODO: implement this
+        # FIXME: review the visualizations
         """
         Visualizes the trajectory.
         Parameters
