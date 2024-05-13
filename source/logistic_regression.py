@@ -7,6 +7,8 @@ from matplotlib.pyplot import Axes
 from scipy.optimize import OptimizeResult
 from scipy.optimize import minimize
 from sklearn.metrics import precision_score
+from visualizer import Visualizer
+import matplotlib.pyplot as plt
 from minimization_methods.gradient_descent import optimalStep, constantStep
 from minimization_methods.quasi_newton import BFGS, DFP
 # FIXME: consider suppressing RuntimeWarning: overflow encountered in exp
@@ -140,8 +142,7 @@ class LogisticRegression:
         Returns
         -------
         """
-        # Visualizer.visualize()
-        pass
+        Visualizer.visualize(ax, self._solution.trajectory, self._solution.x)
 
 
 def main() -> None:
@@ -166,6 +167,10 @@ def main() -> None:
         if v_real[i] == predicted[i]:
             res.append(1)
     print(len(res) / len(v_real))
+
+    figure, ax = plt.subplots(1, 1)
+    log_reg.visualize(ax)
+    plt.savefig("trajectory_viz.png")
 
 
 if __name__ == "__main__":
