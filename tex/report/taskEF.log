@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  14 MAY 2024 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  14 MAY 2024 12:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./taskCD.tex
-(taskCD.tex
+**./taskEF.tex
+(taskEF.tex
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
 (C:\programs\MiKTeX\tex/latex/subfiles\subfiles.cls
@@ -508,8 +508,8 @@ File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count312
 \l__pdf_internal_box=\box56
-) (taskCD.aux)
-\openout1 = `taskCD.aux'.
+) (taskEF.aux)
+\openout1 = `taskEF.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -592,61 +592,34 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 3.
-(taskCD.out) (taskCD.out)
+(taskEF.out) (taskEF.out)
 \@outlinefile=\write3
-\openout3 = `taskCD.out'.
+\openout3 = `taskEF.out'.
 
-
-
-LaTeX Warning: Reference `eq:objf' on page 1 undefined on input line 7.
-
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 9.
-
-(C:\programs\MiKTeX\tex/latex/base\ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
-
-(C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
-
-(C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+ [1
 
 {C:/Users/spita/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/programs/M
-iKTeX/fonts/enc/dvips/base/8r.enc}] (taskCD.aux)
+iKTeX/fonts/enc/dvips/base/8r.enc}] (taskEF.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-Package rerunfilecheck Info: File `taskCD.out' has not changed.
-(rerunfilecheck)             Checksum: C02E8F729041B1A376767847E0959B52;538.
+Package rerunfilecheck Info: File `taskEF.out' has not changed.
+(rerunfilecheck)             Checksum: 016476B348F52A4D70D3A5D766D57EE6;174.
  ) 
 Here is how much of TeX's memory you used:
- 16073 strings out of 474592
- 249128 string characters out of 5757992
- 1939533 words of memory out of 5000000
- 38015 multiletter control sequences out of 15000+600000
- 582892 words of font info for 77 fonts, out of 8000000 for 9000
+ 15986 strings out of 474592
+ 247717 string characters out of 5757992
+ 1927533 words of memory out of 5000000
+ 37956 multiletter control sequences out of 15000+600000
+ 569217 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 95i,7n,99p,545b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr12.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb><C:/programs/MiKTeX/fonts/type1/urw/helveti
-c/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on taskCD.pdf (1 page, 93862 bytes).
+ 95i,5n,99p,545b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/f
+onts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on taskEF.pdf (1 page, 21568 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 9 words of extra memory for PDF output out of 10000 (max. 10000000)
 
