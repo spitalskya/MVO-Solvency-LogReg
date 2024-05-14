@@ -1,5 +1,6 @@
 from typing import Callable, Literal
 from warnings import warn
+from timeit import default_timer
 
 import numpy as np
 import pandas as pd
@@ -22,6 +23,7 @@ class LogisticRegression:
     _solution: OptimizeResult | None
     _prediction_function: Callable[[np.ndarray[np.ndarray]], np.ndarray[float]] | None
 
+    minimization_time: float | None
     fitted: bool
     coefficients: np.ndarray[float]
 
@@ -31,12 +33,14 @@ class LogisticRegression:
         """
         self._solution = None
         self.fitted = False
+        self.minimization_time = None
 
     def fit(self,
             u: np.ndarray[np.ndarray],
             v: np.ndarray[float],
             method: str | None = None,
-            step_selection: Literal["optimal", "suboptimal"] | None = None) -> None:
+            step_selection: Literal["optimal", "suboptimal"] | None = None,
+            time_minimization: bool = False) -> None:
         """
         Fits the regression, i.e., finds optimal coefficients
         for a sigmoid function which describes given data the best. Stores the function.
@@ -64,6 +68,9 @@ class LogisticRegression:
         ones = np.ones((u.shape[0], 1))
         u = np.hstack((ones, u))
 
+        if time_minimization:
+            start = default_timer()
+
         x0 = np.array([0] * u.shape[1])
         if method == "BFGS":
             self._solution = BFGS(obj_fun=objective_function, grad=gradient, x0=x0, step=step_selection)
@@ -75,6 +82,9 @@ class LogisticRegression:
             self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0, stepsize=1e-8)
         else:
             raise ValueError("Wrong method")
+
+        if time_minimization:
+            self.minimization_time = default_timer() - start
 
         self.coefficients = self._solution.x
 
