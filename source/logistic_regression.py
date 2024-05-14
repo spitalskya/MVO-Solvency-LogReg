@@ -72,10 +72,9 @@ class LogisticRegression:
         elif method == "Grad-Opt":
             self._solution = optimalStep(obj_fun=objective_function, grad=gradient, x_0=x0)
         elif method == "Grad-Const":
-            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0)
+            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0, stepsize=1e-8)
         else:
-            warn("Using scipy.optimize.minimize")
-            self._solution = minimize(objective_function, x0, jac=gradient)
+            raise ValueError("Wrong method")
 
         self.coefficients = self._solution.x
 
@@ -152,7 +151,7 @@ def main() -> None:
 
     log_reg = LogisticRegression()
 
-    log_reg.fit(u=u_train, v=v_train, method="DFP", step_selection="optimal")
+    log_reg.fit(u=u_train, v=v_train, method="DFP", step_selection="suboptimal")
     print(log_reg.coefficients)
 
     test = pd.read_csv("data/credit_risk_test.csv")
