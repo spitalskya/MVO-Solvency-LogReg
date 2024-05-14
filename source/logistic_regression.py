@@ -74,6 +74,7 @@ class LogisticRegression:
         elif method == "Grad-Const":
             self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0)
         else:
+            warn("Using scipy.optimize.minimize")
             self._solution = minimize(objective_function, x0, jac=gradient)
 
         self.coefficients = self._solution.x
