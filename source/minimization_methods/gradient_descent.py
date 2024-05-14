@@ -50,11 +50,15 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
     trajectory: list[np.ndarray] = [x.copy()]
 
     it: int
+    njev_bi: int = 0
     for it in range(1, maxiter + 1):
         grad_value: np.ndarray = grad(x, *args)
         if np.linalg.norm(grad_value) < tol:
             break
-        stepsize: float = bisection(obj_fun=obj_fun, grad=grad, x_0=x, args=args, s=-grad_value).x
+
+        stepsizeInfo: OptimizeResult = bisection(obj_fun=obj_fun, grad=grad, x_0=x, args=args, s=-grad_value)
+        stepsize: float = stepsizeInfo.x
+        njev_bi += stepsizeInfo.njev
 
         x -= stepsize * grad_value
         trajectory.append(x.copy())
@@ -70,7 +74,7 @@ def optimalStep(obj_fun: Callable[[np.ndarray], float],
 
     return OptimizeResult(x=x, success=success, 
                           message=msg, nit=it, 
-                          njev=it, trajectory=trajectory)
+                          njev=it + njev_bi, trajectory=trajectory)
     
 
 

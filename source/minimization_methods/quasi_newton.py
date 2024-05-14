@@ -7,7 +7,7 @@ from minimization_methods.minimization_in_direction import bisection, backtracki
 
 def BFGS(obj_fun: Callable[[np.ndarray], float],
          grad: Optional[Callable[[np.ndarray], np.ndarray]],
-         x0: np.ndarray, step: str, args=(), 
+         x_0: np.ndarray, step: str, args=(), 
          callback=None, **kwargs) -> OptimizeResult:
     """_summary_
 
@@ -33,10 +33,10 @@ def BFGS(obj_fun: Callable[[np.ndarray], float],
         def grad(x: np.ndarray, *args) -> np.ndarray:
             return approx_fprime(x, obj_fun, *args)
         
-    g = grad(x0, *args)
+    g = grad(x_0, *args)
         
-    H: np.ndarray = np.identity(x0.shape[0])
-    x: np.ndarray = np.array(x0, dtype=np.float64)
+    H: np.ndarray = np.identity(x_0.shape[0])
+    x: np.ndarray = np.array(x_0, dtype=np.float64)
     
     maxiter: int = kwargs.get("maxiter", 100)
     tol: float = kwargs.get("tol", 1e-3)
