@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  14 MAY 2024 12:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  15 MAY 2024 17:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -631,12 +631,20 @@ LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
 (C:\programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )) [2] (taskAB.tex [3]) [4]
-(taskCD.tex) [5] (taskEF.tex) [6] (taskG.tex) [7] (taskH.tex
+(taskCD.tex
+Overfull \hbox (8.23224pt too wide) in paragraph at lines 34--35
+[]\T1/phv/m/n/12 Nájdený ko-efi-cient $\OML/cmm/m/it/12 x[]$ \T1/phv/m/n/12 má 
+za ná-sle-dok to, ºe pre kli-enta, kto-rého pa-ra-metre sú $\OT1/cmr/m/n/12 (0\
+OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)[]$\T1/
+phv/m/n/12 ,
+ []
+
+[5]) [6] (taskEF.tex) [7] (taskG.tex) [8] (taskH.tex
 Overfull \hbox (13.61072pt too wide) in paragraph at lines 5--5
 \T1/phv/b/n/17.28 siu po-mo-cou kvá-zi-ne-wto-nov-ských alebo gra-dient-ných
  []
 
-) [8] (conclusion.tex) [9] (codeDoc.tex) [10] (report.aux)
+) [9] (conclusion.tex) [10] (codeDoc.tex) [11] (report.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
@@ -645,13 +653,13 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 603342F8011F972E48D8B9BC15FAE44B;2843.
  ) 
 Here is how much of TeX's memory you used:
- 16241 strings out of 474592
- 251975 string characters out of 5757992
+ 16239 strings out of 474592
+ 251961 string characters out of 5757992
  1939533 words of memory out of 5000000
  38122 multiletter control sequences out of 15000+600000
  594758 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,756b,626s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,756b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/c
@@ -663,9 +671,9 @@ onts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 eX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKTeX/fonts/typ
 e1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.
 pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on report.pdf (11 pages, 167612 bytes).
+Output written on report.pdf (12 pages, 173330 bytes).
 PDF statistics:
  214 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
+ 36 named destinations out of 1000 (max. 500000)
  105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

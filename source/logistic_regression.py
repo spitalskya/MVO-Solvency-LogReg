@@ -90,7 +90,7 @@ class LogisticRegression:
         elif method == "Cauchy":
             self._solution = optimalStep(obj_fun=objective_function, grad=gradient, x_0=x0)
         elif method == "Grad-Const":
-            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0, stepsize=2e-5)
+            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0, stepsize=2e-5, maxiter=100000)
         else:
             raise ValueError("Wrong method name provided, \
                              only \"BFGS\", \"DFP\", \"Cuachy\" and \"Grad-Const\" are supported")
@@ -187,9 +187,10 @@ def main() -> None:
 
     # find the coefficients
     log_reg = LogisticRegression()
-    log_reg.fit(u=u_train, v=v_train, method="Grad-Const", step="optimal")
+    log_reg.fit(u=u_train, v=v_train, method="Grad-Const", step="optimal", time_minimization=True)
     print("Coefficients for the sigmoid:", log_reg.coefficients)
     print("Success:", log_reg.get_result().success)
+    print("Time:", log_reg.minimization_time)
     
     # load the testing data
     test_data = pd.read_csv("data/credit_risk_test.csv")

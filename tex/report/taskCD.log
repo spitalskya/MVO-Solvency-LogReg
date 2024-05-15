@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  14 MAY 2024 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  15 MAY 2024 17:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -614,10 +614,25 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+
+LaTeX Warning: Reference `eq:objf' on page 1 undefined on input line 14.
+
+
+Overfull \hbox (8.23224pt too wide) in paragraph at lines 34--35
+[]\T1/phv/m/n/12 Nájdený ko-efi-cient $\OML/cmm/m/it/12 x[]$ \T1/phv/m/n/12 má 
+za ná-sle-dok to, ºe pre kli-enta, kto-rého pa-ra-metre sú $\OT1/cmr/m/n/12 (0\
+OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)[]$\T1/
+phv/m/n/12 ,
+ []
+
+
+LaTeX Warning: Reference `eq:objf' on page 1 undefined on input line 56.
+
+[1
 
 {C:/Users/spita/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/programs/M
-iKTeX/fonts/enc/dvips/base/8r.enc}] (taskCD.aux)
+iKTeX/fonts/enc/dvips/base/8r.enc}] [2] (taskCD.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
@@ -630,13 +645,13 @@ Package rerunfilecheck Info: File `taskCD.out' has not changed.
 (rerunfilecheck)             Checksum: C02E8F729041B1A376767847E0959B52;538.
  ) 
 Here is how much of TeX's memory you used:
- 16073 strings out of 474592
- 249128 string characters out of 5757992
- 1939533 words of memory out of 5000000
- 38015 multiletter control sequences out of 15000+600000
+ 16075 strings out of 474592
+ 249166 string characters out of 5757992
+ 1944533 words of memory out of 5000000
+ 38019 multiletter control sequences out of 15000+600000
  582892 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 95i,7n,99p,545b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 95i,7n,99p,635b,602s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmmi8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm
@@ -644,9 +659,9 @@ public/amsfonts/cm/cmmi8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm
 rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmsy8.pfb><C:/programs/MiKTeX/fonts/type1/urw/helveti
 c/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on taskCD.pdf (1 page, 93862 bytes).
+Output written on taskCD.pdf (2 pages, 100273 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
+ 74 PDF objects out of 1000 (max. 8388607)
+ 6 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 
