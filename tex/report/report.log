@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  15 MAY 2024 17:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 17:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -495,7 +495,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'slovak'.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 37
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 40
 .
 
 (C:\programs\MiKTeX\tex/latex/psnfss\t1phv.fd
@@ -508,24 +508,24 @@ File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
@@ -588,25 +588,25 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 37.
+Package hyperref Info: Link coloring OFF on input line 40.
 (report.out) (report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 62.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 73
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 65.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 76
 .
  (C:\programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 73.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
 
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 73.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
 
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -623,7 +623,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.78 	\newpage
+l.81 	\newpage
                [1] (introduction.tex
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
 0.
@@ -639,7 +639,59 @@ OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)[]$\T1/
 phv/m/n/12 ,
  []
 
-[5]) [6] (taskEF.tex) [7] (taskG.tex) [8] (taskH.tex
+[5]) [6] (taskEF.tex
+<../../source/solvency_log_reg_results/BFGS_optimal.png, id=117, 462.528pt x 34
+6.896pt>
+File: ../../source/solvency_log_reg_results/BFGS_optimal.png Graphic file (type
+ png)
+<use ../../source/solvency_log_reg_results/BFGS_optimal.png>
+Package pdftex.def Info: ../../source/solvency_log_reg_results/BFGS_optimal.png
+  used on input line 21.
+(pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
+<../../source/solvency_log_reg_results/BFGS_suboptimal.png, id=119, 462.528pt x
+ 346.896pt>
+File: ../../source/solvency_log_reg_results/BFGS_suboptimal.png Graphic file (t
+ype png)
+<use ../../source/solvency_log_reg_results/BFGS_suboptimal.png>
+Package pdftex.def Info: ../../source/solvency_log_reg_results/BFGS_suboptimal.
+png  used on input line 25.
+(pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
+<../../source/solvency_log_reg_results/DFP_optimal.png, id=120, 462.528pt x 346
+.896pt>
+File: ../../source/solvency_log_reg_results/DFP_optimal.png Graphic file (type 
+png)
+<use ../../source/solvency_log_reg_results/DFP_optimal.png>
+Package pdftex.def Info: ../../source/solvency_log_reg_results/DFP_optimal.png 
+ used on input line 30.
+(pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
+<../../source/solvency_log_reg_results/DFP_suboptimal.png, id=121, 462.528pt x 
+346.896pt>
+File: ../../source/solvency_log_reg_results/DFP_suboptimal.png Graphic file (ty
+pe png)
+<use ../../source/solvency_log_reg_results/DFP_suboptimal.png>
+Package pdftex.def Info: ../../source/solvency_log_reg_results/DFP_suboptimal.p
+ng  used on input line 34.
+(pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
+<../../source/solvency_log_reg_results/Grad-Const.png, id=122, 462.528pt x 346.
+896pt>
+File: ../../source/solvency_log_reg_results/Grad-Const.png Graphic file (type p
+ng)
+<use ../../source/solvency_log_reg_results/Grad-Const.png>
+Package pdftex.def Info: ../../source/solvency_log_reg_results/Grad-Const.png  
+used on input line 43.
+(pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
+<../../source/solvency_log_reg_results/Cauchy.png, id=123, 462.528pt x 346.896p
+t>
+File: ../../source/solvency_log_reg_results/Cauchy.png Graphic file (type png)
+<use ../../source/solvency_log_reg_results/Cauchy.png>
+Package pdftex.def Info: ../../source/solvency_log_reg_results/Cauchy.png  used
+ on input line 47.
+(pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
+) [7 <../../source/solvency_log_reg_results/BFGS_optimal.png> <../../source/sol
+vency_log_reg_results/BFGS_suboptimal.png> <../../source/solvency_log_reg_resul
+ts/DFP_optimal.png> <../../source/solvency_log_reg_results/DFP_suboptimal.png> 
+<../../source/solvency_log_reg_results/Grad-Const.png> <../../source/solvency_l
+og_reg_results/Cauchy.png>] (taskG.tex) [8] (taskH.tex
 Overfull \hbox (13.61072pt too wide) in paragraph at lines 5--5
 \T1/phv/b/n/17.28 siu po-mo-cou kvá-zi-ne-wto-nov-ských alebo gra-dient-ných
  []
@@ -653,11 +705,11 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 603342F8011F972E48D8B9BC15FAE44B;2843.
  ) 
 Here is how much of TeX's memory you used:
- 16239 strings out of 474592
- 251961 string characters out of 5757992
+ 16313 strings out of 474592
+ 255076 string characters out of 5757992
  1939533 words of memory out of 5000000
- 38122 multiletter control sequences out of 15000+600000
- 594758 words of font info for 98 fonts, out of 8000000 for 9000
+ 38185 multiletter control sequences out of 15000+600000
+ 597648 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,756b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/programs/Mi
@@ -671,9 +723,9 @@ onts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 eX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKTeX/fonts/typ
 e1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.
 pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on report.pdf (12 pages, 173330 bytes).
+Output written on report.pdf (12 pages, 294440 bytes).
 PDF statistics:
- 214 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 232 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 

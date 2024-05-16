@@ -25,6 +25,6 @@ class Visualizer:
         ax.plot(iterations, distances, marker='o', markersize=1, linewidth=2)
         ax.set_yscale('log')
         ax.set_xlabel('Iteration')
-        ax.set_ylabel('$||J(x_k) - J^* ||_2$')
+        ax.set_ylabel('$||J(x^k) - J^* ||_2$')
         ax.set_title('Convergence graph - distances to found optimum in each iteration')
         ax.grid(True)
