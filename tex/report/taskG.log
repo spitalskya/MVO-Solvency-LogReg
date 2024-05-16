@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  14 MAY 2024 12:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -596,7 +596,33 @@ Package hyperref Info: Link coloring OFF on input line 3.
 \@outlinefile=\write3
 \openout3 = `taskG.out'.
 
- [1
+
+
+LaTeX Warning: Reference `eq:objf' on page 1 undefined on input line 7.
+
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 7.
+
+(C:\programs\MiKTeX\tex/latex/base\ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
+
+(C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
+
+(C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+LaTeX Warning: Reference `eq:objf' on page 1 undefined on input line 7.
+
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
+.
+(C:\programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [1
 
 {C:/Users/spita/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/programs/M
 iKTeX/fonts/enc/dvips/base/8r.enc}] (taskG.aux)
@@ -604,22 +630,32 @@ iKTeX/fonts/enc/dvips/base/8r.enc}] (taskG.aux)
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `taskG.out' has not changed.
 (rerunfilecheck)             Checksum: 6D93BDA8F7166B10266B26DB31881884;268.
  ) 
 Here is how much of TeX's memory you used:
- 15984 strings out of 474592
- 247684 string characters out of 5757992
- 1926533 words of memory out of 5000000
- 37956 multiletter control sequences out of 15000+600000
- 569217 words of font info for 45 fonts, out of 8000000 for 9000
+ 16081 strings out of 474592
+ 249526 string characters out of 5757992
+ 1935533 words of memory out of 5000000
+ 38025 multiletter control sequences out of 15000+600000
+ 578739 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 95i,5n,99p,544b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/f
-onts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on taskG.pdf (1 page, 22908 bytes).
+ 95i,9n,99p,646b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+1200.pk><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/programs/MiKTeX/fonts/type1/urw/
+helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on taskG.pdf (1 page, 96772 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
- 5 named destinations out of 1000 (max. 500000)
+ 79 PDF objects out of 1000 (max. 8388607)
+ 3 named destinations out of 1000 (max. 500000)
  9 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 17:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -640,92 +640,99 @@ phv/m/n/12 ,
  []
 
 [5]) [6] (taskEF.tex
-<../../source/solvency_log_reg_results/BFGS_optimal.png, id=117, 462.528pt x 34
+<../../source/solvency_log_reg_results/BFGS_optimal.png, id=127, 462.528pt x 34
 6.896pt>
 File: ../../source/solvency_log_reg_results/BFGS_optimal.png Graphic file (type
  png)
 <use ../../source/solvency_log_reg_results/BFGS_optimal.png>
 Package pdftex.def Info: ../../source/solvency_log_reg_results/BFGS_optimal.png
-  used on input line 21.
+  used on input line 18.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/BFGS_suboptimal.png, id=119, 462.528pt x
+<../../source/solvency_log_reg_results/BFGS_suboptimal.png, id=129, 462.528pt x
  346.896pt>
 File: ../../source/solvency_log_reg_results/BFGS_suboptimal.png Graphic file (t
 ype png)
 <use ../../source/solvency_log_reg_results/BFGS_suboptimal.png>
 Package pdftex.def Info: ../../source/solvency_log_reg_results/BFGS_suboptimal.
-png  used on input line 25.
+png  used on input line 22.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/DFP_optimal.png, id=120, 462.528pt x 346
+<../../source/solvency_log_reg_results/DFP_optimal.png, id=130, 462.528pt x 346
 .896pt>
 File: ../../source/solvency_log_reg_results/DFP_optimal.png Graphic file (type 
 png)
 <use ../../source/solvency_log_reg_results/DFP_optimal.png>
 Package pdftex.def Info: ../../source/solvency_log_reg_results/DFP_optimal.png 
- used on input line 30.
+ used on input line 27.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/DFP_suboptimal.png, id=121, 462.528pt x 
+<../../source/solvency_log_reg_results/DFP_suboptimal.png, id=131, 462.528pt x 
 346.896pt>
 File: ../../source/solvency_log_reg_results/DFP_suboptimal.png Graphic file (ty
 pe png)
 <use ../../source/solvency_log_reg_results/DFP_suboptimal.png>
 Package pdftex.def Info: ../../source/solvency_log_reg_results/DFP_suboptimal.p
-ng  used on input line 34.
+ng  used on input line 31.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/Grad-Const.png, id=122, 462.528pt x 346.
+ [7 <../../source/solvency_log_reg_results/BFGS_optimal.png> <../../source/solv
+ency_log_reg_results/BFGS_suboptimal.png> <../../source/solvency_log_reg_result
+s/DFP_optimal.png> <../../source/solvency_log_reg_results/DFP_suboptimal.png>]
+<../../source/solvency_log_reg_results/Grad-Const.png, id=141, 462.528pt x 346.
 896pt>
 File: ../../source/solvency_log_reg_results/Grad-Const.png Graphic file (type p
 ng)
 <use ../../source/solvency_log_reg_results/Grad-Const.png>
 Package pdftex.def Info: ../../source/solvency_log_reg_results/Grad-Const.png  
-used on input line 43.
+used on input line 46.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/Cauchy.png, id=123, 462.528pt x 346.896p
+<../../source/solvency_log_reg_results/Cauchy.png, id=142, 462.528pt x 346.896p
 t>
 File: ../../source/solvency_log_reg_results/Cauchy.png Graphic file (type png)
 <use ../../source/solvency_log_reg_results/Cauchy.png>
 Package pdftex.def Info: ../../source/solvency_log_reg_results/Cauchy.png  used
- on input line 47.
+ on input line 50.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-) [7 <../../source/solvency_log_reg_results/BFGS_optimal.png> <../../source/sol
-vency_log_reg_results/BFGS_suboptimal.png> <../../source/solvency_log_reg_resul
-ts/DFP_optimal.png> <../../source/solvency_log_reg_results/DFP_suboptimal.png> 
-<../../source/solvency_log_reg_results/Grad-Const.png> <../../source/solvency_l
-og_reg_results/Cauchy.png>] (taskG.tex) [8] (taskH.tex
+) [8 <../../source/solvency_log_reg_results/Grad-Const.png> <../../source/solve
+ncy_log_reg_results/Cauchy.png>] (taskG.tex
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
+.
+
+(C:\programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)) [9] (taskH.tex
 Overfull \hbox (13.61072pt too wide) in paragraph at lines 5--5
 \T1/phv/b/n/17.28 siu po-mo-cou kvá-zi-ne-wto-nov-ských alebo gra-dient-ných
  []
 
-) [9] (conclusion.tex) [10] (codeDoc.tex) [11] (report.aux)
+) [10] (conclusion.tex) [11] (codeDoc.tex) [12] (report.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 603342F8011F972E48D8B9BC15FAE44B;2843.
+(rerunfilecheck)             Checksum: F6310346E49BEAA4FCE0D98EE71245E9;3468.
  ) 
 Here is how much of TeX's memory you used:
- 16313 strings out of 474592
- 255076 string characters out of 5757992
+ 16332 strings out of 474592
+ 255700 string characters out of 5757992
  1939533 words of memory out of 5000000
- 38185 multiletter control sequences out of 15000+600000
- 597648 words of font info for 100 fonts, out of 8000000 for 9000
+ 38203 multiletter control sequences out of 15000+600000
+ 597961 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,756b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmmi6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmr8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb
-><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/programs/MiKT
-eX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKTeX/fonts/typ
-e1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.
-pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on report.pdf (12 pages, 294440 bytes).
+ <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+1200.pk><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmmi6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+<C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
+y6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/program
+s/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKTeX/fon
+ts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/u
+hvr8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on report.pdf (13 pages, 306330 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

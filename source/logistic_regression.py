@@ -90,7 +90,7 @@ class LogisticRegression:
         elif method == "Cauchy":
             self._solution = optimalStep(obj_fun=objective_function, grad=gradient, x_0=x0)
         elif method == "Grad-Const":
-            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0, stepsize=2e-5, maxiter=100000)
+            self._solution = constantStep(obj_fun=objective_function, grad=gradient, x_0=x0, stepsize=2e-5)
         else:
             raise ValueError("Wrong method name provided, \
                              only \"BFGS\", \"DFP\", \"Cuachy\" and \"Grad-Const\" are supported")
