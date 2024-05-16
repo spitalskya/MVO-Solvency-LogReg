@@ -3,6 +3,7 @@ import numpy as np
 from scipy.optimize import OptimizeResult, approx_fprime
 from minimization_methods.minimization_in_direction import bisection
 
+
 def optimalStep(obj_fun: Callable[[np.ndarray], float],
                 grad: Optional[Callable[[np.ndarray], np.ndarray]],
                 x_0: np.ndarray, args: tuple=(), callback: Optional[callable]=None, 

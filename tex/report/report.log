@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 18:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 19:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -495,7 +495,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'slovak'.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 40
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 67
 .
 
 (C:\programs\MiKTeX\tex/latex/psnfss\t1phv.fd
@@ -508,24 +508,24 @@ File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
@@ -588,26 +588,26 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 40.
+Package hyperref Info: Link coloring OFF on input line 67.
 (report.out) (report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 65.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 76
-.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 92.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 10
+3.
  (C:\programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+.
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+.
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -623,10 +623,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.81 	\newpage
-               [1] (introduction.tex
+l.108 	\newpage
+                [1] (introduction.tex
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-0.
+6.
 
 (C:\programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
@@ -640,7 +640,7 @@ phv/m/n/12 ,
  []
 
 [5]) [6] (taskEF.tex
-<../../source/solvency_log_reg_results/BFGS_optimal.png, id=127, 462.528pt x 34
+<../../source/solvency_log_reg_results/BFGS_optimal.png, id=126, 462.528pt x 34
 6.896pt>
 File: ../../source/solvency_log_reg_results/BFGS_optimal.png Graphic file (type
  png)
@@ -648,7 +648,7 @@ File: ../../source/solvency_log_reg_results/BFGS_optimal.png Graphic file (type
 Package pdftex.def Info: ../../source/solvency_log_reg_results/BFGS_optimal.png
   used on input line 18.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/BFGS_suboptimal.png, id=129, 462.528pt x
+<../../source/solvency_log_reg_results/BFGS_suboptimal.png, id=128, 462.528pt x
  346.896pt>
 File: ../../source/solvency_log_reg_results/BFGS_suboptimal.png Graphic file (t
 ype png)
@@ -656,7 +656,7 @@ ype png)
 Package pdftex.def Info: ../../source/solvency_log_reg_results/BFGS_suboptimal.
 png  used on input line 22.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/DFP_optimal.png, id=130, 462.528pt x 346
+<../../source/solvency_log_reg_results/DFP_optimal.png, id=129, 462.528pt x 346
 .896pt>
 File: ../../source/solvency_log_reg_results/DFP_optimal.png Graphic file (type 
 png)
@@ -664,7 +664,7 @@ png)
 Package pdftex.def Info: ../../source/solvency_log_reg_results/DFP_optimal.png 
  used on input line 27.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/DFP_suboptimal.png, id=131, 462.528pt x 
+<../../source/solvency_log_reg_results/DFP_suboptimal.png, id=130, 462.528pt x 
 346.896pt>
 File: ../../source/solvency_log_reg_results/DFP_suboptimal.png Graphic file (ty
 pe png)
@@ -675,7 +675,7 @@ ng  used on input line 31.
  [7 <../../source/solvency_log_reg_results/BFGS_optimal.png> <../../source/solv
 ency_log_reg_results/BFGS_suboptimal.png> <../../source/solvency_log_reg_result
 s/DFP_optimal.png> <../../source/solvency_log_reg_results/DFP_suboptimal.png>]
-<../../source/solvency_log_reg_results/Grad-Const.png, id=141, 462.528pt x 346.
+<../../source/solvency_log_reg_results/Grad-Const.png, id=140, 462.528pt x 346.
 896pt>
 File: ../../source/solvency_log_reg_results/Grad-Const.png Graphic file (type p
 ng)
@@ -683,7 +683,7 @@ ng)
 Package pdftex.def Info: ../../source/solvency_log_reg_results/Grad-Const.png  
 used on input line 46.
 (pdftex.def)             Requested size: 182.09486pt x 136.56984pt.
-<../../source/solvency_log_reg_results/Cauchy.png, id=142, 462.528pt x 346.896p
+<../../source/solvency_log_reg_results/Cauchy.png, id=141, 462.528pt x 346.896p
 t>
 File: ../../source/solvency_log_reg_results/Cauchy.png Graphic file (type png)
 <use ../../source/solvency_log_reg_results/Cauchy.png>
@@ -702,37 +702,55 @@ Overfull \hbox (13.61072pt too wide) in paragraph at lines 5--5
 \T1/phv/b/n/17.28 siu po-mo-cou kvá-zi-ne-wto-nov-ských alebo gra-dient-ných
  []
 
-) [10] (conclusion.tex) [11] (codeDoc.tex) [12] (report.aux)
+(C:\programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 10.
+
+(C:\programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(C:\programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)) [10] (conclusion.tex)
+[11] (codeDoc.tex
+Overfull \hbox (9.79984pt too wide) in paragraph at lines 25--25
+[]|\T1/cmtt/m/n/12 minimization_methods -- []| 
+ []
+
+) [12] (report.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: F6310346E49BEAA4FCE0D98EE71245E9;3468.
+(rerunfilecheck)             Checksum: FAFE4786166FBD9AE7449C1CECE8D8DE;3419.
  ) 
 Here is how much of TeX's memory you used:
- 16332 strings out of 474592
- 255700 string characters out of 5757992
- 1939533 words of memory out of 5000000
- 38203 multiletter control sequences out of 15000+600000
- 597961 words of font info for 101 fonts, out of 8000000 for 9000
+ 17155 strings out of 474592
+ 264124 string characters out of 5757992
+ 2016533 words of memory out of 5000000
+ 39005 multiletter control sequences out of 15000+600000
+ 598274 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,756b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,85p,756b,1728s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
-1200.pk><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmmi6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
-<C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/program
-s/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKTeX/fon
-ts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/u
-hvr8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on report.pdf (13 pages, 306330 bytes).
+1000.pk> <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ectt1200.pk><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
+/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmmi6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
+8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/p
+rograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKT
+eX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helv
+etic/uhvr8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on report.pdf (13 pages, 340009 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
+ 358 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

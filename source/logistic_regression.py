@@ -1,5 +1,5 @@
 from typing import Callable, Literal, Optional
-from warnings import warn, catch_warnings
+from warnings import warn
 from timeit import default_timer
 import numpy as np
 import pandas as pd

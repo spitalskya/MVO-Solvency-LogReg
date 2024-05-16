@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 19:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 19:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./taskAB.tex
-(taskAB.tex
+**./codeDoc.tex
+(codeDoc.tex
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
 (C:\programs\MiKTeX\tex/latex/subfiles\subfiles.cls
@@ -508,8 +508,8 @@ File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count312
 \l__pdf_internal_box=\box56
-) (taskAB.aux)
-\openout1 = `taskAB.aux'.
+) (codeDoc.aux)
+\openout1 = `codeDoc.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -592,56 +592,44 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 3.
-(taskAB.out) (taskAB.out)
+(codeDoc.out) (codeDoc.out)
 \@outlinefile=\write3
-\openout3 = `taskAB.out'.
+\openout3 = `codeDoc.out'.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 8.
-
- (C:\programs\MiKTeX\tex/latex/base\ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
+.
+ (C:\programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 8.
+Overfull \hbox (9.79984pt too wide) in paragraph at lines 25--25
+[]|\T1/cmtt/m/n/12 minimization_methods -- []| 
+ []
 
-(C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 8.
-
-(C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+[1
 
 {C:/Users/spita/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/programs/M
-iKTeX/fonts/enc/dvips/base/8r.enc}] [2] (taskAB.aux)
+iKTeX/fonts/enc/dvips/base/8r.enc}] (codeDoc.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
-Package rerunfilecheck Info: File `taskAB.out' has not changed.
-(rerunfilecheck)             Checksum: 6ECC95C3C9E57CDB53317850A4387C67;716.
+Package rerunfilecheck Info: File `codeDoc.out' has not changed.
+(rerunfilecheck)             Checksum: 34BAD6DE108113A4BE1D7C0775140431;112.
  ) 
 Here is how much of TeX's memory you used:
- 16073 strings out of 474592
- 249173 string characters out of 5757992
- 1945533 words of memory out of 5000000
- 38018 multiletter control sequences out of 15000+600000
- 575618 words of font info for 66 fonts, out of 8000000 for 9000
+ 16053 strings out of 474592
+ 248963 string characters out of 5757992
+ 1933533 words of memory out of 5000000
+ 38023 multiletter control sequences out of 15000+600000
+ 566800 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 95i,10n,99p,738b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmi6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmmi8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb><C:/programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmsy6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-<C:/programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs
-/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw
-/helvetic/uhvr8a.pfb>
-Output written on taskAB.pdf (2 pages, 124567 bytes).
+ 95i,5n,99p,546b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+1200.pk><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/Mi
+KTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on codeDoc.pdf (1 page, 36999 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 77 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
+ 9 words of extra memory for PDF output out of 10000 (max. 10000000)
 

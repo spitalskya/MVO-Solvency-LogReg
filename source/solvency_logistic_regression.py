@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from logistic_regression import LogisticRegression
 
+
 def main() -> None:
     """Run logistic regression for every method and step size.
     For each save coefficients, percentage of correct predictions and visualize convergence.

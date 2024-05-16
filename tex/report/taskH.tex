@@ -4,11 +4,42 @@
 	
 \section{Nadstavba - všeobecný model pre logistickú regresiu pomocou kvázinewtonovských alebo gradientných metód}\label{sec:H}
 
-\textbf{Čo sem spísať}
-\begin{enumerate}
-	\item popísať štruktúru modulu
-	\item mierne popísať funkčnosť a spúšťanie
-	\item spomenúť testy
-\end{enumerate}
+Ako nadstavbu sme si zvolili implementovať všeobecný model na binárnu klasifikáciu, teda nie viazaný len na dáta o solventnosti. V neskorších projektoch by teda malo byť možné používať náš kód ako balík, z ktorého sa importuje trieda na binárnu klasifikáciu pomocou:
+
+\begin{python}
+	from logistic_regression import LogisticRegression
+\end{python}
+
+Následne, pomocou metódy \pyth|LogisticRegression.fit()| sa zistí vektor koeficientov $x$. Táto metóda očakáva trénovaciu maticu nezávislých vektorov \pyth|u|, vektor binárnych dát \pyth|v|, označenie metódy, ktorá má byť použitá na minimalizáciu účelovej funkcie (buď \pyth|"BFGS"|, \pyth|"DFP"|, \pyth|"Cauchy"| alebo \pyth|"Grad-Const"|) a v prípade použitia BFGS alebo DFP metódy očakáva aj požadovanú dĺžku kroku (buď \pyth|"optimal"| alebo \pyth|"suboptimal"|). Príklad použitia môže vyzerať takto:
+
+\begin{python}
+	log_reg = LogisticRegression()
+	log_reg.fit(u=u_train, v=v_train, method="DFP", step="optimal")
+\end{python}
+
+Vektor predikovaných $v^{i'}$ sa získa pomocou \pyth|LogisticRegression.predict()|, ktorá očakáva testovaciu maticu \pyth|u_test|, s rovnakým počtom stĺpcov, ako matica \pyth|u| (musí tomuto volaniu však predchádzať volanie metódy \pyth|fit()|):
+
+\begin{python}
+	log_reg.predict(u_test)
+\end{python}
+
+Konvergenčný graf sa generuje pomocou \pyth|LogisticRegression.visualize()|, ktorý očakáva ako argument inštanciu triedy \pyth|matplotlib.pyplot.Axes|:
+
+\begin{python}
+	import matplotlib.pyplot as plt
+	ax = plt.gca()
+	log_reg.visualize(ax)
+\end{python}
+
+Práca s touto triedou aj s minimalizačnými metódami je potrebne popísaná v dokumentácii v samotnom kóde.
+
+Príklad použitia tohto modulu sa dá spustiť v terminálovom okne, ktoré je otvorené v priečinku \verb*|source| jedným z príkazov (podľa operačného systému, resp. nainštalovaného nástoja \verb*|make|):
+
+\begin{lstlisting}[style=terminal, language=bash]
+	python -m logistic_regression
+	python3 -m logistic_regression
+	make log_reg
+\end{lstlisting}
+
 	
 \end{document}

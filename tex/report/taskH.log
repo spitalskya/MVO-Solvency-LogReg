@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  14 MAY 2024 12:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 18:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -508,8 +508,7 @@ File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count312
 \l__pdf_internal_box=\box56
-)
-No file taskH.aux.
+) (taskH.aux)
 \openout1 = `taskH.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -534,6 +533,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
+
 (C:\programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count313
@@ -592,6 +592,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 3.
+(taskH.out) (taskH.out)
 \@outlinefile=\write3
 \openout3 = `taskH.out'.
 
@@ -600,7 +601,41 @@ Overfull \hbox (13.61072pt too wide) in paragraph at lines 5--5
 \T1/phv/b/n/17.28 siu po-mo-cou kvá-zi-ne-wto-nov-ských alebo gra-dient-ných
  []
 
-[1
+(C:\programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
+.
+
+(C:\programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 10.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 13
+.
+
+(C:\programs\MiKTeX\tex/latex/base\ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+
+
+(C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+
+
+(C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(C:\programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(C:\programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+) [1
 
 {C:/Users/spita/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/programs/M
 iKTeX/fonts/enc/dvips/base/8r.enc}] (taskH.aux)
@@ -608,32 +643,26 @@ iKTeX/fonts/enc/dvips/base/8r.enc}] (taskH.aux)
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `taskH.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `taskH.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B7AD13C724EE925DFABE13DA267066E0;612.
+Package rerunfilecheck Info: File `taskH.out' has not changed.
+(rerunfilecheck)             Checksum: B7AD13C724EE925DFABE13DA267066E0;612.
  ) 
 Here is how much of TeX's memory you used:
- 15975 strings out of 474592
- 247324 string characters out of 5757992
- 1926533 words of memory out of 5000000
- 37952 multiletter control sequences out of 15000+600000
- 569217 words of font info for 45 fonts, out of 8000000 for 9000
+ 16851 strings out of 474592
+ 257273 string characters out of 5757992
+ 2059533 words of memory out of 5000000
+ 38774 multiletter control sequences out of 15000+600000
+ 573514 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 95i,5n,99p,544b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/f
-onts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on taskH.pdf (1 page, 22625 bytes).
+ 95i,5n,99p,694b,1635s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+1200.pk> <C:\Users\spita\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ectt1000.pk><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:
+/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmsy6.pfb><C:/programs/MiKTeX/fonts/type1/urw/hel
+vetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on taskH.pdf (1 page, 80942 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 144 PDF objects out of 1000 (max. 8388607)
+ 18 named destinations out of 1000 (max. 500000)
+ 9 words of extra memory for PDF output out of 10000 (max. 10000000)
 
