@@ -9,17 +9,17 @@ Do logistickej funkcie $g(z) = \frac{1}{1+e^{-z}}$, ktorá bude odhadovať pravd
 
 Chceme odhadnúť zložky vektora $x$ tak, aby čo najvierohodnejšie predpovedal solventnosť vzhľadom na naše dáta. To vedie k optimalizačnej úlohe:
 
-\begin{align}
-	\min~&J(x) \label{eq:objf} \\
-	 &x \in \mathbb{R}^4 \nonumber
-\end{align}
+\begin{align*}
+	\min~&J(x)  \\
+	 &x \in \mathbb{R}^4
+\end{align*}
 
 kde
 
-\begin{equation*}
+\begin{equation}
 	J(x) = -\sum_{i=1}^{m}v^i \ln \left(g\left(x^Tu^i\right)\right) 
-			+ (1-v^i) \ln \left(1 - g\left(x^Tu^i\right)\right)
-\end{equation*}
+			+ (1-v^i) \ln \left(1 - g\left(x^Tu^i\right)\right) \label{eq:objf}
+\end{equation}
 
 Z predpisu funkcie si môžeme všimnúť, že suma nadobúda záporné hodnoty, čiže $J(x)$ nadobúda kladné hodnoty. Taktiež si môžeme všimnúť, že ak je klient $i$ solventný, čiže $v^i=1$ a pre nejaký vektor parametrov $x$ je hodnota $g\left(x^Tu^i\right)$ blízka nule, má to za následok \enquote{výrazné} zvyšovanie hodnoty účelovej funkcie. Podobnou logikou vidíme zvyšovanie hodnoty účelovej funkcie pre nesolventných klientov, ak pomocou vektora $x$ mu prisúdime veľkú pravdepodobnosť solventnosti hodnotou $g\left(x^Tu^i\right)$. Chceme teda nájsť taký vektor $x$, že $g\left(x^Tu^i\right)$ bude blízke 1 pre solvetného klienta a blízke 0 pre nesolventného.
 

@@ -151,7 +151,7 @@ class LogisticRegression:
 
     def predict(self, u: np.ndarray[np.ndarray[int]]) -> np.ndarray[float]:
         """Returns predicted values of dependent variable from given u matrix of independent vectors
-            probability of dependent variable being 1 > 0.5 corresponds to 1
+            probability of dependent variable being 1 >= 0.5 corresponds to 1
             else 0
 
         Args:

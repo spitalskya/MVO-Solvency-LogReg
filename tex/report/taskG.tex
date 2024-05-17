@@ -4,7 +4,7 @@
 
 \section{Binárna klasifikácia solventnosti klientov}\label{sec:G}
 
-Minimalizáciou funkcie \ref{eq:objf} sme našli taký vektor koeficientov $x$, aby po dosadení do logistickej funkcie $g(x^Tu^i)$ bola výsledná hodnota blízka $v^i$, pre $i=1,\dots,m$. Vektory $u^i$ a hodnoty $v^i$, podľa ktorých bola funkcia \ref{eq:objf} vytvorená a podľa ktorých sme našli vektor $x$, sú uložené v súbore \verb*|credit_risk_train.csv|.
+Minimalizáciou funkcie \ref{eq:objf} sme našli taký vektor koeficientov $x$, aby čo najkonzistentnejšie platilo, že po dosadení do logistickej funkcie bola hodnota $g(x^Tu^i) \geq 0.5$ pre $v^i=1$, inak chceme, aby platilo $g(x^Tu^i) < 0.5$. Vektory $u^i$ a hodnoty $v^i$, podľa ktorých bola funkcia \ref{eq:objf} vytvorená a podľa ktorých sme našli vektor $x$, sú uložené v súbore \verb*|credit_risk_train.csv|.
 
 Chceli by sme zistiť, či nájdený vektor $x$ bude spĺňať vlastnosť popísanú vyššie aj pre také vektory $u^{i'}$ ($i'$ značí, že sa už nejedná o vektory z \verb*|credit_risk_train.csv|), ktoré neboli zahrnuté v účelovej funkcii, teda neboli zohľadňované pri minimalizácii. Na to nám poslúžia dáta \verb*|credit_risk_test.csv|. Budeme postupne počítať hodnoty $g(x^Tu^{i'}) =: p$, pričom ak $p \geq 0.5$, tak povieme, že náš odhad $v^{i'}$ je 1, inak 0.
 

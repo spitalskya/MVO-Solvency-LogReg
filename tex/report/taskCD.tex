@@ -11,7 +11,7 @@ Ako štartovací bod sme pri každej metóde volili $x_0 = (0,0,0,0)^T$ a ako kr
 
 \subsection{Kvázinewtonovské metódy}
 
-Minimalizujeme \ref{eq:objf} pomocout metód BFGS a DFP s optimálnym krokom (nájdeným bisekciou) a približne optimálnym krokom (nájdeným backtrackingom).
+Minimalizujeme \ref{eq:objf} pomocou metód BFGS a DFP s optimálnym krokom (nájdeným bisekciou) a približne optimálnym krokom (nájdeným backtrackingom).
 
 \begin{center}
 	\small
@@ -29,7 +29,7 @@ Minimalizujeme \ref{eq:objf} pomocout metód BFGS a DFP s optimálnym krokom (n�
 
 Všetky štyri minimalizácie skonvergovali k minimu (vzhľadom na kritérium optimality) za menej ako 13 iterácií. Vidíme, že optimálne hodnoty všetkých štyroch minimalizácií sa odlišujú najskôr v ráde $10^{-5}$, čiže môžeme predpokladať, že konvergujú k rovnakému bodu minima.
 
-Môžeme si všimnúť, že pozitívny vplyv na pravdepodobnosť solventnosti klienta má druhý sledovaný parameter, čiže pomer úspor a investícií, a tretí sledovaný porameter, čiže počet rokov v súčasnom zamestnaní. Takisto si môžeme všimnúť, že počet mesiacov od otvorenia účtu (prvý sledovaný parameter), má na odhad pravdepodobnosti solventnosti klienta negatívny vplyv, čo je prekvapivý výsledok. 
+Môžeme si všimnúť, že pozitívny vplyv na pravdepodobnosť solventnosti klienta má druhý sledovaný parameter, čiže pomer úspor a investícií, a tretí sledovaný parameter, čiže počet rokov v súčasnom zamestnaní. Takisto si môžeme všimnúť, že počet mesiacov od otvorenia účtu (prvý sledovaný parameter), má na odhad pravdepodobnosti solventnosti klienta negatívny vplyv, čo je prekvapivý výsledok. 
 
 Nájdený koeficient $x_0$ má za následok to, že pre klienta, ktorého parametre sú $(0,0,0)^T$, po dosadení do logistickej funkcie dostaneme pravdepodobnosť solventnosti približne 0.5517.
 
@@ -67,7 +67,7 @@ Podobne ako vyššie, minimalizujeme \ref{eq:objf} pomocou gradientnej metódy s
 	\end{tabular}
 \end{center}
 
-Gradientná metóda s optimálnym krokom skonvergovala (vzhľadom na kritérium optimality) po rádovo 5000 iteráciách. Gradientná metóda s konštantným krokom nedokonvergovala (vzhľadom na kritérium optimality) ani po 10000 iteráciách (neboli sme experimentovaním nájsť vhodnú dĺžku kroku). 
+Gradientná metóda s optimálnym krokom skonvergovala (vzhľadom na kritérium optimality) po rádovo 5000 iteráciách. Gradientná metóda s konštantným krokom nedokonvergovala (vzhľadom na kritérium optimality) ani po 10000 iteráciách (neboli sme schopní nájsť experimentovaním vhodnú dĺžku kroku, pre ktorú by skonvergovala). 
 
 Signifikancia jednotlivých parametrov klientov je zhodná s tou, ktorá je popísaná vyššie. Takisto, pre klienta $(0,0,0)^T$ je odhad pravdepodobnosti solventnosti približne 0.5517 (pre optimálny krok), resp. 0.5482 (pre konštantný krok).
 

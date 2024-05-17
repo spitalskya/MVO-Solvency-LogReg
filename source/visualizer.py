@@ -22,7 +22,7 @@ class Visualizer:
         iterations: list[int] = list(range(1, len(distances) + 1))
         
         # plot the distances on the log-scale
-        ax.plot(iterations, distances, marker='o', markersize=1, linewidth=2)
+        ax.plot(iterations, distances, marker='.')
         ax.set_yscale('log')
         ax.set_xlabel('Iteration')
         ax.set_ylabel('$||J(x^k) - J^* ||_2$')
