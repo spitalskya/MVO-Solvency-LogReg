@@ -4,22 +4,25 @@
 	
 \section{Prehľad kódu}	
 
-%\begin{figure}[h!]
-%	\dirtree{%
-%		.1 /.
-%		.2 code.
-%		.3 data.
-%		.4 A04plotregres.npz - \text{arbitrárne 2D dáta využívané v \ref{sec:B}}.
-%		.4 A04wines.csv - \text{dátový súbor štatistík vín využívaný v \ref{sec:C} a \ref{sec:D}}.
-%		.3 models.
-%		.4 models.py - \text{implementované triedy pre $L^1$ a $L^{\infty}$ lineárnu regresiu}.
-%		.4 DataGenerator.py - \text{generátor 2D a 3D dát}.
-%		.3 implementation\textunderscore and\textunderscore visualization.py - \text{kód k sekcii \ref{sec:B}, úloha B}.
-%		.3 wine\textunderscore price\textunderscore prediction.py - \text{kód k sekcii \ref{sec:C}, úloha C}.
-%		.3 r\textunderscore squared\textunderscore coefficient.py - \text{kód k sekcii \ref{sec:D}, úloha D}.
-%		.3 model\textunderscore demonstration.ipynb - \text{demonštrácia tried \pyth|L1Model| a \pyth|LInfModel|}.
-%		.2 report.pdf - \text{report celého projektu}.
-%	}
-%\end{figure}
+V nasledujúcich riadkoch je popísaný obsah priečinku \verb*|source|, kde je lokalizovaný kód a dáta:
+
+\begin{figure}[h!]
+	\dirtree{%
+		.1 source.
+		.2 data.
+		.3 credit\textunderscore risk\textunderscore train.csv -- \text{trénovacie dáta o solventnosti klientov}.
+		.3 credit\textunderscore risk\textunderscore test.csv -- \text{testovacie dáta o solventnosti klientov}.
+		.2 minimization\textunderscore methods -- \text{metódy na minimalizáciu funkcií viac premenných}.
+		.3 gradient\textunderscore descent.py -- \text{GM s konštantným a optimálnym krokom}.
+		.3 quasi\textunderscore newton.py -- \text{KNM s optimálnym/približne optimálnym krokom}.
+		.3 minimization\textunderscore in \textunderscore direction.py -- \text{bisekcia a backtracking}.
+		.2 logistic\textunderscore regression.py -- \text{trieda LogisticRegression}.
+		.2 solvency\textunderscore log\textunderscore reg\textunderscore results -- \text{priečinok s výsledkami minimalizácií}.
+		.2 solvency\textunderscore log\textunderscore reg\textunderscore results.py -- \text{skript spúšťajúci všetky minimalizácie}.
+		.2 unit\textunderscore tests.py -- \text{skript na otestovanie funkčnosti metód}.
+		.2 visualizer.py -- \text{implementované vykreslenie konvergenčných grafov}.
+		.2 Makefile -- \text{terminálové pravidlá na spúšťanie častí projektu}.
+	}
+\end{figure}
 
 \end{document}

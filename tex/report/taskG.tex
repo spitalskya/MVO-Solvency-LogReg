@@ -4,5 +4,28 @@
 
 \section{Binárna klasifikácia solventnosti klientov}\label{sec:G}
 
+Minimalizáciou funkcie \ref{eq:objf} sme našli taký vektor koeficientov $x$, aby čo najkonzistentnejšie platilo, že po dosadení do logistickej funkcie bola hodnota $g(x^Tu^i) \geq 0.5$ pre $v^i=1$, inak chceme, aby platilo $g(x^Tu^i) < 0.5$. Vektory $u^i$ a hodnoty $v^i$, podľa ktorých bola funkcia \ref{eq:objf} vytvorená a podľa ktorých sme našli vektor $x$, sú uložené v súbore \verb*|credit_risk_train.csv|.
+
+Chceli by sme zistiť, či nájdený vektor $x$ bude spĺňať vlastnosť popísanú vyššie aj pre také vektory $u^{i'}$ ($i'$ značí, že sa už nejedná o vektory z \verb*|credit_risk_train.csv|), ktoré neboli zahrnuté v účelovej funkcii, teda neboli zohľadňované pri minimalizácii. Na to nám poslúžia dáta \verb*|credit_risk_test.csv|. Budeme postupne počítať hodnoty $g(x^Tu^{i'}) =: p$, pričom ak $p \geq 0.5$, tak povieme, že náš odhad $v^{i'}$ je 1, inak 0.
+
+Pre nájdené aproximácie miním všetkými 6 metódami (pri gradientnej metóde s konštantným krokom použijeme aproximáciu minima po 10000 iteráciách) vypíšeme podiel správnych predikcií hodnôt $v^{i'}$.
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c |}
+		\hline
+		& podiel správnych predikcií $v^{i'}$  \\
+		\hline
+		BFGS s optimálnym krokom & 0.7209  \\
+		BFGS s približne optimálnym krokom & 0.7209  \\
+		DFP s optimálnym krokom & 0.7209  \\
+		DFP s približne optimálnym krokom & 0.7209  \\
+		GM s optimálnym krokom & 0.7209  \\
+		GM s konštantným krokom & 0.7176  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Vidíme, že všetky metódy až na gradientnú s konštantným krokom majú zhodný podiel správnych predikcií $v^{i'}$. Je to pravdepodobne spôsobené tým, že ich aproximácie minima sú si navzájom veľmi blízke, čiže tento rozdiel sa nemusí prejaviť na pomerne malom množstve dát v \verb*|credit_risk_test.csv|. Môžeme teda zhodnotiť, že náš model na binárnu klasifikáciu mal pre tieto dáta 72\% úspešnosť a vzhľadom na časovú efektivitu (spomenutú vyššie) je najvýhodnejšia implementácia pomocou jednej z kvázinewtonovských metód s približne optimálnym krokom.
 
 \end{document}

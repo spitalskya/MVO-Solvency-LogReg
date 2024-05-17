@@ -2,7 +2,94 @@
 
 \begin{document}   
 
-\section{Riešenie úlohy pomocou kvázinewtonovských metód}\label{sec:CD}
+\section{Riešenie optimalizačnej úlohy}\label{sec:CD}
+
+V tejto časti sa venujeme riešeniu optimalizačnej úlohy \ref{eq:objf} rôznymi metódami. Tie boli implementované v Pythone. Konkrétne sme implementovali gradientné metódy (s optimálnou a konštnantou dĺžkou kroku) a kvázinewtonovské metódy BFGS a DFP (s približne optimálnou dĺžkou kroku nájdenou backtracking-om alebo s optimálnou dĺžkou kroku, nájdenou bisekciou). 
+
+Ako štartovací bod sme pri každej metóde volili $x_0 = (0,0,0,0)^T$ a ako kritérium optimality bolo použité $||\nabla J(x^k)|| \leq 10^{-3}$. Optimálnym bodom bude teda vektor parametrov $x$, ktorý budeme používať v logistickej funkcii na odhadovanie solventnosti klienta podľa jeho dát.
+	
+
+\subsection{Kvázinewtonovské metódy}
+
+Minimalizujeme \ref{eq:objf} pomocou metód BFGS a DFP s optimálnym krokom (nájdeným bisekciou) a približne optimálnym krokom (nájdeným backtrackingom).
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c  c  c  c |}
+		\hline
+		 & $x_0$ & $x_1$ & $x_2$ & $x_3$ \\
+		\hline
+		BFGS + backtracking & 0.20751015 & -0.04712048 & 0.31535175 & 0.30654686 \\
+		BFGS + bisekcia & 0.20751337 & -0.04712051 & 0.31535088 & 0.30654664 \\
+		DFP + backtracking & 0.20750999 & -0.04712047 & 0.31535176 & 0.30654688 \\
+		DFP + bisekcia & 0.20751338 & -0.04712052 & 0.31535087 & 0.30654663 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Všetky štyri minimalizácie skonvergovali k minimu (vzhľadom na kritérium optimality) za menej ako 13 iterácií. Vidíme, že optimálne hodnoty všetkých štyroch minimalizácií sa odlišujú najskôr v ráde $10^{-5}$, čiže môžeme predpokladať, že konvergujú k rovnakému bodu minima.
+
+Môžeme si všimnúť, že pozitívny vplyv na pravdepodobnosť solventnosti klienta má druhý sledovaný parameter, čiže pomer úspor a investícií, a tretí sledovaný parameter, čiže počet rokov v súčasnom zamestnaní. Takisto si môžeme všimnúť, že počet mesiacov od otvorenia účtu (prvý sledovaný parameter), má na odhad pravdepodobnosti solventnosti klienta negatívny vplyv, čo je prekvapivý výsledok. 
+
+Nájdený koeficient $x_0$ má za následok to, že pre klienta, ktorého parametre sú $(0,0,0)^T$, po dosadení do logistickej funkcie dostaneme pravdepodobnosť solventnosti približne 0.5517.
+
+Môžeme si takisto porovnať čas (v sekundách) potrebných na nájdenie minima pre jednotlivé metódy.
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c |}
+		\hline
+		& čas[s]  \\
+		\hline
+		BFGS + backtracking & 0.0067  \\
+		BFGS + bisekcia & 0.0074  \\
+		DFP + backtracking & 0.0031  \\
+		DFP + bisekcia & 0.0069  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Vidíme, že pre obidve implementované kvázinewtonovské metódy je implementácia s približne optimálnou dĺžkou rýchlejšia.
+
+\subsection{Gradientné metódy}
+
+Podobne ako vyššie, minimalizujeme \ref{eq:objf} pomocou gradientnej metódy s optimálnym a s konštantným krokom. Na nájdenie optimálneho kroku používame bisekciu, ako konštantný krok používame $2\cdot 10^{-5}$.
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c  c  c  c |}
+		\hline
+		& $x_0$ & $x_1$ & $x_2$ & $x_3$ \\
+		\hline
+		optimálny krok & 0.20742273 & -0.04711977 & 0.31535679 & 0.30656397 \\
+		konštantný krok & 0.19322267 & -0.0470058 &  0.31617533 & 0.30934507 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Gradientná metóda s optimálnym krokom skonvergovala (vzhľadom na kritérium optimality) po rádovo 5000 iteráciách. Gradientná metóda s konštantným krokom nedokonvergovala (vzhľadom na kritérium optimality) ani po 10000 iteráciách (neboli sme schopní nájsť experimentovaním vhodnú dĺžku kroku, pre ktorú by skonvergovala). 
+
+Signifikancia jednotlivých parametrov klientov je zhodná s tou, ktorá je popísaná vyššie. Takisto, pre klienta $(0,0,0)^T$ je odhad pravdepodobnosti solventnosti približne 0.5517 (pre optimálny krok), resp. 0.5482 (pre konštantný krok).
+
+Rovnako ako vyššie, môžeme porovnať časy potrebné na minimalizáciu.
+
+\begin{center}
+	\small
+	\begin{tabular}{| c | c |}
+		\hline
+		& čas[s]  \\
+		\hline
+		optimálny krok & 6.1772  \\
+		konštantný krok & 0.8142  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Vidíme, že hľadanie optimálneho kroku v každej iterácií pridá približne 5.3 sekundy k času výpočtu, aj keď iterácií bolo rádovo polovica oproti konštantnému kroku. Skúsili sme preto nastaviť maximálny počet iterácií pre gradientnú metódu s konštatným krokom na $10^5$. Už po rádovo 30000 iteráciách bolo dosiahnuté kritérium optimality a jeho nájdenie trvalo približne 0.9181 sekundy. Vidíme teda, že pri vysokom počte iterácií môže mať zmysel použiť skôr konštatný krok, keďže vieme výrazne ušetriť čas potrebný na hľadanie optimálneho kroku. 
+
+\begin{equation*}
+	J^*_{GM~const} = (0.20742016,~-0.04711976,~0.31535694,~0.30656448)^T
+\end{equation*}
 
 
 \end{document}

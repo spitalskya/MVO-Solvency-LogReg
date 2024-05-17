@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  29 APR 2024 17:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  17 MAY 2024 13:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -622,10 +622,10 @@ Package rerunfilecheck Info: File `taskAB.out' has not changed.
 (rerunfilecheck)             Checksum: 6ECC95C3C9E57CDB53317850A4387C67;716.
  ) 
 Here is how much of TeX's memory you used:
- 16063 strings out of 474592
- 248999 string characters out of 5757992
+ 16073 strings out of 474592
+ 249179 string characters out of 5757992
  1945533 words of memory out of 5000000
- 38009 multiletter control sequences out of 15000+600000
+ 38018 multiletter control sequences out of 15000+600000
  575618 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  95i,10n,99p,738b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -639,9 +639,9 @@ onts/cm/cmsy6.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 <C:/programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs
 /MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw
 /helvetic/uhvr8a.pfb>
-Output written on taskAB.pdf (2 pages, 124036 bytes).
+Output written on taskAB.pdf (2 pages, 124566 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
+ 92 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

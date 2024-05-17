@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  29 APR 2024 17:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.14)  16 MAY 2024 19:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -596,24 +596,24 @@ Package hyperref Info: Link coloring OFF on input line 3.
 \openout3 = `introduction.out'.
 
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-0.
+6.
 
 (C:\programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 10
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 16
 .
 
 (C:\programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
 
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 
 
 (C:\programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -630,10 +630,10 @@ Package rerunfilecheck Info: File `introduction.out' has not changed.
 (rerunfilecheck)             Checksum: 59E9CE6DA90E605DC666A32D9A88146B;287.
  ) 
 Here is how much of TeX's memory you used:
- 16086 strings out of 474592
- 249381 string characters out of 5757992
- 1929533 words of memory out of 5000000
- 38030 multiletter control sequences out of 15000+600000
+ 16092 strings out of 474592
+ 249480 string characters out of 5757992
+ 1933533 words of memory out of 5000000
+ 38036 multiletter control sequences out of 15000+600000
  575931 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  95i,5n,99p,551b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -644,7 +644,7 @@ cmr8.pfb><C:/programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/prog
 rams/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/programs/MiKTeX/
 fonts/type1/urw/helvetic/uhvb8a.pfb><C:/programs/MiKTeX/fonts/type1/urw/helveti
 c/uhvr8a.pfb>
-Output written on introduction.pdf (1 page, 73508 bytes).
+Output written on introduction.pdf (1 page, 76471 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  4 named destinations out of 1000 (max. 500000)
